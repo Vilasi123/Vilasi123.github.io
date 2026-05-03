@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ENTRY Scanner</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- QR Scanner Library -->
+  <script src="https://unpkg.com/html5-qrcode"></script>
+
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #111;
+      color: white;
+    }
+    #reader {
+      width: 300px;
+      margin: auto;
+    }
+    h2 {
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h2>📍 ENTRY CHECKPOINT</h2>
+<div id="reader"></div>
+
+<script>
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyZRnzW0v_VyMQWyAdnSfR3SeNzxoL22myMJyW5UuiXkZiv9Eg_P9pren0A3ZeIrNty/exec";
+const CHECKPOINT = "ENTRY";
+
+function onScanSuccess(decodedText) {
+  // Stop scanner after scan
+  html5QrcodeScanner.clear();
+
+  // Extract ID from QR URL
+  const url = new URL(decodedText);
+  const id = url.searchParams.get("id");
+
+  if (!id) {
+    alert("Invalid QR Code");
+    return;
+  }
+
+  // Redirect to Apps Script logging URL
+  window.location.href = `${WEB_APP_URL}?id=${id}&checkpoint=${CHECKPOINT}`;
+}
+
+const html5QrcodeScanner = new Html5QrcodeScanner(
+  "reader",
+  { fps: 10, qrbox: 250 }
+);
+
+html5QrcodeScanner.render(onScanSuccess);
+</script>
+
+</body>
+</html>
