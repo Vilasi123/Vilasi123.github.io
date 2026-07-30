@@ -1,0 +1,2023 @@
+/* =========================================================
+   WEDDINGS BY M&M — Stylesheet
+   Design tokens
+   --------------------------------------------------------
+   Background (cream): #F8F3EB
+   Maroon (primary):    #8B1E3F
+   Maroon (deep/hover):  #6E1731
+   Gold (accent):        #C9A266
+   Ink (text):           #2B1B1F
+   Ink (muted):          #6B5A5E
+   White:                 #FFFFFF
+   ========================================================= */
+
+@font-face {
+  font-family: "Luxurious Script";
+  src: url("./assets/font/LuxuriousScript-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Allrounder Monument Test";
+  src: url("./assets/font/AllrounderMonumentTest-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Mona Sans SemiExpanded";
+  src: url("./assets/font/MonaSans_SemiExpanded-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+
+:root {
+  --cream: #F8F3EB;
+  --cream-alt: #F1E9DA;
+  --maroon: #8B1E3F;
+  --maroon-deep: #6E1731;
+  --gold: #C9A266;
+  --gold-light: #EAD9B0;
+  --ink: #2B1B1F;
+  --ink-muted: #6B5A5E;
+  --white: #FFFFFF;
+
+  --font-display: 'Allrounder Monument Test';
+  --font-body: 'Mona Sans SemiExpanded';
+
+  --header-height: 118px;
+  --transition-base: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --shadow-soft: 0 20px 45px rgba(43, 27, 31, 0.12);
+}
+
+/* =========================================================
+   RESET & BASE
+   ========================================================= */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+a { text-decoration: none; color: inherit; }
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--maroon);
+  letter-spacing: 0.01em;
+}
+
+section { position: relative; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+}
+
+/* =========================================================
+   SHARED UTILITIES
+   (used across multiple sections — not tied to any one)
+   ========================================================= */
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 366px;
+  height: 39px;
+  padding: 0 32px;
+  border-radius: 6px;
+  font-family: "Allrounder Monument Test";
+  font-size: 16px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+}
+
+.btn-outline {
+  border-color: var(--maroon);
+  color: var(--maroon);
+  background: transparent;
+}
+.btn-outline:hover {
+  background: var(--maroon);
+  color: var(--white);
+  transform: translateY(-2px);
+}
+
+.btn-solid {
+  background: var(--maroon);
+  color: var(--white);
+  box-shadow: var(--shadow-soft);
+}
+.btn-solid:hover {
+  background: var(--maroon-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 24px 50px rgba(43, 27, 31, 0.28);
+}
+
+.btn-solid-inverse {
+  background: var(--cream);
+  color: var(--maroon);
+}
+.btn-solid-inverse:hover {
+  background: var(--white);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Decorative divider image — shared by Hero, Stories, Venue, Stats, Partners.
+   Base size lives here; sections needing a different size scope it via a
+   descendant selector instead of redefining the bare class (that redefinition
+   was the earlier bug that caused every divider on the page to collapse to
+   whichever section's rule happened to be declared last). */
+.section-divider {
+  width: 140px;
+  margin: 0 auto 20px;
+  display: block;
+}
+
+/* Fade-in reveal animation classes — used by every section */
+.fade-in, .fade-in-up, .fade-in-left, .fade-in-right {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition: opacity 0.9s ease, transform 0.9s ease;
+}
+.fade-in { transform: translateY(20px); }
+.fade-in-up { transform: translateY(36px); }
+.fade-in-left { transform: translateX(-40px); }
+.fade-in-right { transform: translateX(40px); }
+
+.fade-in.is-visible,
+.fade-in-up.is-visible,
+.fade-in-left.is-visible,
+.fade-in-right.is-visible {
+  opacity: 1;
+  transform: translate(0, 0);
+}
+
+/* Stagger children of grids for a cascading reveal */
+.stories-grid .story-card:nth-child(2) { transition-delay: 0.12s; }
+.stories-grid .story-card:nth-child(3) { transition-delay: 0.24s; }
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+.header-section {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background:  #F8F3EB;
+  backdrop-filter: blur(10px);
+  border-bottom: 2px solid var(--maroon);
+  transition: box-shadow var(--transition-base), padding var(--transition-base);
+}
+
+.header-section.scrolled {
+  box-shadow: 0 8px 30px rgba(43, 27, 31, 0.08);
+}
+
+.header-container {
+  height: var(--header-height);
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.header-nav-left, .header-nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.8rem;
+  flex: 1;
+}
+.header-nav-right { justify-content: flex-end; }
+
+.header-nav-link {
+  font-family: "Allrounder Monument Test", sans-serif;
+  font-size: 0.7rem;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--maroon);
+  padding: 0.5em 1em;
+  border-radius: 999px;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.header-nav-link:hover { color: var(--maroon); }
+
+.header-nav-link.header-nav-active {
+  background: transparent;
+  color: var(--maroon);
+  border: 1px solid var(--maroon);
+  border-radius: 4px;
+  padding: 0.5em 1.1em;
+  line-height: 1;
+}
+.header-nav-link.header-nav-active:hover { background: var(--maroon); color: var(--white); }
+
+/* Smaller CTA buttons scoped to the header only — other sections keep full-size buttons */
+.header-container .btn,
+.header-mobile-nav .btn {
+  padding: 0.5em 1.3em;
+  font-size: 0.68rem;
+  line-height: 1;
+}
+
+.header-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  flex-shrink: 0;
+}
+
+.header-logo-img {
+  height: 62px;
+  width: auto;
+}
+
+.header-menu-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+.header-menu-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--maroon);
+  transition: all var(--transition-base);
+}
+
+.header-mobile-nav {
+  display: none;
+  flex-direction: column;
+  background: var(--cream);
+  border-top: 1px solid rgba(139, 30, 63, 0.15);
+  padding: 1rem 2rem 1.5rem;
+}
+.header-mobile-nav .header-nav-link { padding: 0.9em 0; }
+.header-mobile-nav .btn { margin-top: 0.6rem; text-align: center; }
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero-section {
+  position: relative;
+  height: 100vh;
+  min-height: 740px;
+  overflow: hidden;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 58%;
+  filter: brightness(1.08) saturate(1.03);
+}
+
+.hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.08) 0%, rgba(0,0,0,0.02) 30%, rgba(0,0,0,0.1) 100%);
+}
+
+.hero-content {
+  position: absolute;
+  top: 140px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  width: 100%;
+  text-align: center;
+  color: #8C1739;
+  padding: 0 1.5rem;
+  max-width: 1550px;
+}
+
+.hero-title {
+  font-family: 'Allrounder Monument Test';
+  font-weight: 400;
+ font-size: 30px;
+  line-height: 1;
+  letter-spacing: 0.03em;
+  text-align: center;
+  color: #8C1739;
+  width: 100%;
+  margin: 0 auto 14px;
+  text-shadow: none;
+  white-space: nowrap;
+}
+
+.hero-subtitle {
+  font-size:  14.72px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #7C3F51;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto 80px;
+  letter-spacing: 0.02em;
+  font-family: 'Mona Sans SemiExpanded';
+}
+
+.hero-scroll-cue {
+  position: absolute;
+  bottom: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+.hero-scroll-cue span {
+  display: block;
+  width: 1px;
+  height: 42px;
+  background: linear-gradient(180deg, var(--white), transparent);
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    top: 130px;
+    overflow: visible;
+  }
+
+  .hero-title {
+    font-size: clamp(1.3rem, 5.5vw, 1.7rem);
+    line-height: 1.25;
+    white-space: normal;
+    margin-bottom: 12px;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.85rem, 3.2vw, 0.95rem);
+    line-height: 1.5;
+    margin-bottom: 80px;
+  }
+
+  .hero-image img {
+     object-position: center 55%;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .section-divider{
+   display: block;
+    width:187px;
+    height:18px;
+    margin: 0 auto 16px;
+    filter: none;
+    font-weight: 400; 
+
+  }
+ 
+}
+
+
+
+/* =========================================================
+   ABOUT SECTION
+   ========================================================= */
+
+.about-section{
+    padding: 3rem 2.5rem 1rem;
+    background:var(--cream);
+}
+
+.about-container{
+    max-width:1600px;
+    margin:0 auto;
+    position:relative;
+    height:700px;
+}
+
+/* =========================================================
+   ABOUT CARD
+   ========================================================= */
+
+.about-card{
+    position:absolute;
+    top:0;
+    left:60px;
+
+    width:900px;
+    height:559px;
+
+    padding:48px;
+
+    background:#8C1739;
+    border:2px solid #FFECD0;
+    border-radius:10px;
+
+    color:#FFECD0;
+
+    box-sizing:border-box;
+
+    z-index:2;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.18);
+}
+
+/* =========================================================
+   ABOUT IMAGE
+   ========================================================= */
+
+.about-image{
+    position:absolute;
+
+    width:900px;
+    height:500px;
+
+    right:0;
+    top:114px;
+
+    border-radius:10px;
+    overflow:hidden;
+
+    z-index:1;
+
+    box-shadow:0 20px 40px rgba(0,0,0,.18);
+}
+
+.about-image img{
+    width:100%;
+    height:100%;
+    display:block;
+
+    object-fit:cover;
+    object-position:center;
+}
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.about-script-tag{
+    display:block;
+
+    margin-bottom:16px;
+
+    font-family:'Luxurious Script',cursive;
+    font-size:58px;
+    line-height:1;
+
+    color:#FFECD0;
+}
+
+.about-card h2{
+    margin-bottom:24px;
+
+    font-family:'Allrounder Monument Test';
+
+    font-size:20px;
+    font-weight:400;
+
+    line-height:1.45;
+    letter-spacing:.02em;
+
+    text-transform:uppercase;
+
+    color:#FFECD0;
+}
+
+.about-card p{
+    margin-bottom:18px;
+
+    font-family:'Mona Sans SemiExpanded';
+
+    font-size:15px;
+    line-height:1.8;
+
+    color:#FFECD0;
+}
+
+.about-card p:last-child{
+    margin-bottom:0;
+}
+
+/* Tablet */
+@media (max-width:1200px){
+
+    .about-container{
+        position: static;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        height: auto;
+    }
+
+    .about-card{
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        height: auto;
+        left: 0;
+        top: 0;
+        padding: 40px;
+        margin: 0 auto;
+    }
+
+    .about-image{
+        position: relative;
+        width: 100%;
+        max-width: 900px;
+        height: auto;
+        left: 0;
+        right: 0;
+        top: 0;
+        margin: 0 auto;
+    }
+
+    .about-image img{
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+    }
+}
+
+/* Mobile */
+@media (max-width:768px){
+
+    .about-section{
+        padding: 3rem 1.25rem;
+    }
+
+    .about-card{
+        padding: 24px;
+    }
+
+    .about-image{
+        max-width: 100%;
+    }
+}
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width:480px){
+
+    .about-card{
+        padding:24px 20px;
+    }
+
+    .about-script-tag{
+        font-size:34px;
+    }
+
+    .about-card h2{
+        font-size:16px;
+    }
+
+    .about-card p{
+        font-size:13px;
+    }
+
+    .about-image{
+        height:220px;
+    }
+
+}
+
+/* =========================================================
+   LOVE STORIES
+   ========================================================= */
+.stories-section {
+     padding-bottom: 3rem; /* kiwa jast asel */
+     margin-bottom: 0;
+
+  background: var(--cream);
+}
+
+.stories-heading {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 3.5rem;
+  padding: 0 1.5rem;
+}
+.stories-heading h2 {
+  font-family: "Allrounder Monument Test";
+  font-weight: 500;
+  font-color:#8C1739;
+  font-size: 28px;
+  margin-bottom: 0.8rem;
+}
+.stories-heading p {
+  font-family: "Allrounder Monument Test";
+  font-weight: 400;
+  font-size: 20px;
+  font-color:#61313F;
+}
+
+.stories-grid {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+
+.story-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4.6;
+  box-shadow: var(--shadow-soft);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+.story-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px rgba(43, 27, 31, 0.22);
+}
+
+.story-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+.story-card:hover img { transform: scale(1.08); }
+
+.story-overlay {
+  position: absolute;
+  left: 0; right: 0; bottom: 0;
+  padding: 1.4rem 0.8rem 1.2rem;
+  text-align: center;
+  background: linear-gradient(180deg, transparent 0%, rgba(139,30,63,0.55) 45%, rgba(139,30,63,0.92) 100%);
+}
+.story-overlay h3 {
+  font-family: "Allrounder Monument Test", sans-serif;
+   color: #FFF7EB;
+   font-size: 18px;
+  line-height: 1.25;
+  margin-bottom: 0.4rem;
+}
+.story-overlay .section-divider {
+  width: 60px;
+  filter: brightness(0) invert(1);
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   WHAT WE DO
+   ========================================================= */
+
+.whatwedo-section{
+    padding:4rem 2.5rem;
+    background:var(--cream);
+    overflow:hidden;
+}
+
+.whatwedo-container{
+    max-width:1450px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns:772px 845px;
+    align-items:center;
+    gap:0;
+}
+
+/* =========================================================
+   GALLERY
+   ========================================================= */
+
+.whatwedo-gallery{
+    position:relative;
+    width:772px;
+    height:524px;
+}
+
+.whatwedo-image{
+    position:absolute;
+    overflow:hidden;
+    border-radius:13px;
+    border:2px solid rgba(255,255,255,.6);
+    box-shadow:0 20px 40px rgba(0,0,0,.08);
+}
+
+.whatwedo-image img{
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+}
+
+/* Left */
+
+.whatwedo-image-left{
+    width:209px;
+    height:291px;
+
+    left:0;
+    top:125px;
+
+    z-index:1;
+}
+
+/* Center */
+
+.whatwedo-image-center{
+    width:322px;
+    height:460px;
+
+    left:225px;
+    top:63px;
+
+    z-index:3;
+}
+
+/* Right */
+/* Position matches exact Figma measurement (left: 769.38px, container origin
+   at 206.29px -> relative left = 563px). Card overlaps this image by exactly
+   112px, per the precise Figma card/image coordinates. */
+.whatwedo-image-right{
+    width:209px;
+    height:291px;
+
+    left:563px;
+    top:192px;
+
+    z-index:4;
+}
+
+/* =========================================================
+   CARD
+   ========================================================= */
+
+.whatwedo-card{
+
+    width:845px;
+    min-height:616px;
+
+    background:#F8EEDB;
+
+    border-radius:0 29px 29px 0;
+
+    padding:35px 55px 70px 155px;
+
+    margin-left:-112px;
+
+    position:relative;
+
+    z-index:2;
+
+    box-shadow:0 20px 45px rgba(0,0,0,.08);
+}
+
+.whatwedo-title{
+    display:block;
+    font-family:"Luxurious Script";
+    font-size:75px;
+    line-height:1;
+    color:var(--maroon);
+    margin-bottom:24px;
+}
+
+.whatwedo-subtitle{
+    font-family:"Allrounder Monument Test";
+    font-size:32px;
+    line-height:1.3;
+    color:var(--maroon);
+    text-transform:uppercase;
+    margin-bottom:24px;
+}
+
+.whatwedo-text{
+    font-family:"Mona Sans SemiExpanded";
+    font-size:18px;
+    line-height:1.8;
+    color:var(--ink-muted);
+    margin-bottom:16px;
+}
+
+.whatwedo-text:last-child{
+    margin-bottom:0;
+}
+
+/* =========================================================
+   WHAT WE DO - TABLET
+   ========================================================= */
+
+@media (max-width:1024px){
+
+    .whatwedo-section{
+        padding:4rem 2rem;
+    }
+
+    .whatwedo-container{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:3rem;
+    }
+
+    .whatwedo-gallery{
+        position:relative;
+        width:617px;
+        height:360px;
+        margin:0 auto;
+    }
+
+    .whatwedo-gallery-inner{
+        width:100%;
+        height:100%;
+        transform:none;
+    }
+
+    /* Left */
+    .whatwedo-image-left{
+        width:166px;
+        height:231px;
+        left:0;
+        top:100px;
+        z-index:1;
+    }
+
+    /* Center */
+    .whatwedo-image-center{
+        width:249px;
+        height:355px;
+        left:184px;
+        top:0;
+        z-index:3;
+    }
+
+    /* Right */
+    .whatwedo-image-right{
+        width:166px;
+        height:231px;
+        left:451px;
+        top:125px;
+        z-index:2;
+    }
+
+    .whatwedo-card{
+        width:100%;
+        max-width:850px;
+        margin:0;
+        padding:42px;
+        min-height:auto;
+        border-radius:20px;
+    }
+
+    .whatwedo-title{
+        font-size:60px;
+    }
+
+    .whatwedo-subtitle{
+        font-size:28px;
+    }
+
+    .whatwedo-text{
+        font-size:17px;
+        line-height:1.8;
+    }
+}
+
+/* =========================================================
+   WHAT WE DO - MOBILE
+   Images sized so there's a real, visible 8-9px gap between
+   each one (left<->center and center<->right), instead of
+   letting rounded corners/shadows overlap and blend together.
+   Gallery is 300px wide here; phones narrower than 341px use
+   the smaller fallback sizes in the @media (max-width:340px)
+   block further down, since 300px doesn't fit iPhone SE.
+   ========================================================= */
+
+@media (max-width:768px){
+
+    .whatwedo-section{
+        padding:3rem 1.25rem;
+    }
+
+    .whatwedo-container{
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:2.5rem;
+    }
+
+    .whatwedo-gallery{
+        position:relative;
+        width:300px;
+        max-width:100%;
+        height:180px;
+        margin:0 auto;
+    }
+
+    .whatwedo-gallery-inner{
+        width:100%;
+        height:100%;
+        transform:none;
+    }
+
+    .whatwedo-image{
+        position:absolute;
+        overflow:hidden;
+        border-radius:13px;
+    }
+
+    .whatwedo-image img{
+        width:100%;
+        height:100%;
+        object-fit:cover;
+        display:block;
+    }
+
+    /* Left */
+    .whatwedo-image-left{
+        width:81px;
+        height:114px;
+        left:0;
+        top:49px;
+        z-index:1;
+    }
+
+    /* Center */
+    .whatwedo-image-center{
+        width:122px;
+        height:172px;
+        left:89px;
+        top:0;
+        z-index:3;
+    }
+
+    /* Right */
+    .whatwedo-image-right{
+        width:81px;
+        height:114px;
+        left:219px;
+        top:63px;
+        z-index:2;
+    }
+
+    .whatwedo-card{
+        width:100%;
+        max-width:100%;
+        margin:0;
+        padding:30px 24px;
+        border-radius:20px;
+    }
+
+    .whatwedo-title{
+        font-size:44px;
+        line-height:1;
+    }
+
+    .whatwedo-subtitle{
+        font-size:22px;
+        line-height:1.35;
+        margin-bottom:18px;
+    }
+
+    .whatwedo-text{
+        font-size:15px;
+        line-height:1.8;
+        margin-bottom:14px;
+    }
+}
+
+/* Narrowest phones (iPhone SE and similar) can't fit the larger
+   images above without overflowing - use the smaller, safe sizes
+   here instead, still with the same visible gap. */
+@media (max-width:370px){
+
+    .whatwedo-gallery{
+        width:280px;
+        height:170px;
+    }
+
+    .whatwedo-image-left{
+        width:75px;
+        height:105px;
+        top:45px;
+    }
+
+    .whatwedo-image-center{
+        width:113px;
+        height:160px;
+        left:83px;
+    }
+
+    .whatwedo-image-right{
+        width:75px;
+        height:105px;
+        left:204px;
+        top:58px;
+    }
+}
+
+
+
+/* =========================================================
+   WEDDING SERVICES GALLERY (10-photo grid)
+   ========================================================= */
+.wedding-services-section {
+   padding:4rem 2.5rem 1rem;
+  background: var(--cream);
+}
+
+.wedding-services-grid {
+  width: 100%;
+  max-width: 1608px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 1px;
+}
+
+.wedding-services-card {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 322 / 467;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.wedding-services-card img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+.wedding-services-card:hover img {
+  transform: scale(1.08);
+}
+
+.wedding-services-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  background: rgba(70, 2, 22, 0.65);
+  transition: background 0.3s ease;
+}
+.wedding-services-card:hover .wedding-services-overlay {
+  background: rgba(70, 2, 22, 0.45);
+}
+
+.wedding-services-overlay h3 {
+font-family: "Allrounder Monument Test";
+  margin: 0;
+  color:#FFFFFF;
+  font-weight: 300;
+  line-height: 1.3;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 22px;
+}
+
+/* =========================================================
+   VENUE
+   ========================================================= */
+.venue-section {
+ background:#F8F0E6;
+    text-align:center;
+
+    padding:48px 2.5rem 64px;
+}
+
+.venue-heading {
+  margin-bottom: 65px;
+}
+.venue-heading .section-divider {
+  width: 95px;
+}
+.venue-heading h2 {
+  font-family: "Allrounder Monument Test";
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: #861939;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.venue-heading p {
+ font-family: "Allrounder Monument Test";
+  font-size: 20px;
+  color: #61313F;
+  font-weight: 400;
+}
+
+.venue-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.venue-card {
+  text-decoration: none;
+}
+
+.venue-circle {
+  width: 212px;
+  height: 212px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #861939;
+  border: 2px solid #D5A25F;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .35s ease;
+}
+.venue-card:hover .venue-circle {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 45px rgba(0,0,0,.15);
+}
+
+.venue-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.venue-card-viewall .venue-circle {
+  background: #FBE6C9;
+  flex-direction: column;
+}
+.venue-card-viewall .venue-arrow-icon {
+  font-size: 60px;
+  color: #861939;
+  line-height: 1;
+}
+.venue-card-viewall span {
+  margin-top: 8px;
+ font-family: "Allrounder Monument Test";
+  font-size: 20px;
+  letter-spacing: 2px;
+  color: #861939;
+}
+
+@media (max-width: 1200px) {
+  .venue-circle { width: 180px; height: 180px; }
+}
+
+@media (max-width: 768px) {
+  .venue-container { gap: 16px; }
+  .venue-circle { width: 145px; height: 145px; }
+  .venue-heading h2 { font-size: 28px; }
+  .venue-heading p { font-size: 16px; }
+}
+
+@media (max-width: 768px) {
+
+  .venue-card-viewall .venue-arrow-icon {
+    font-size: 1.8rem;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .venue-card-viewall .venue-circle span {
+    font-size: 0.95rem;
+    letter-spacing: 2px;
+    line-height: 1;
+  }
+
+}
+
+/* =========================================================
+   BOOK VENUE
+   ========================================================= */
+.book-venue-section {
+   padding:3.5rem 2.5rem;
+  background: #F8F0E6;
+  padding: 120px 0;
+}
+
+.book-venue-container {
+  width: 1650.91px;
+  max-width: 92%;
+  height: 679.75px;
+  margin: 0 auto;
+  background: #8C1639;
+  border: 2px solid #E8D6C2;
+  border-radius: 41px;
+  padding: 58px 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 70px;
+  overflow: hidden;
+}
+
+.book-venue-image {
+  flex: 1.25;
+  display: flex;
+  justify-content: center;
+}
+.book-venue-image img {
+  width: 100%;
+  max-width: 850px;
+  height: 480px;
+  object-fit: cover;
+  border-radius: 24px;
+  border: 2px solid #F3E5D6;
+  display: block;
+}
+
+.book-venue-content {
+  flex: 0.8;
+  color: #F8E8D8;
+}
+.book-venue-content h2 {
+ font-family: "Allrounder Monument Test";
+  font-size: 42px;
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  color: #FAE7CF;
+}
+.book-venue-content p {
+  font-family: "Mona Sans SemiExpanded", sans-serif;
+  font-size: 18px;
+  line-height: 1.65;
+  color: #F3E5D6;
+  margin-bottom: 24px;
+  font-weight: 400;
+}
+
+.book-venue-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: #F8E3C4;
+  color: #8C1639;
+  border-radius: 6px;
+  text-decoration: none;
+font-family: "Allrounder Monument Test";
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  transition: .35s ease;
+}
+.book-venue-btn span {
+  font-size: 17px;
+  line-height: 1;
+}
+.book-venue-btn:hover {
+  background: #FFFFFF;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 25px rgba(0,0,0,.18);
+}
+
+@media (max-width: 1400px) {
+  .book-venue-container { height: auto; padding: 50px; gap: 50px; }
+  .book-venue-image img { height: 420px; }
+  .book-venue-content h2 { font-size: 36px; }
+}
+
+@media (max-width: 992px) {
+  .book-venue-container { flex-direction: column; text-align: center; padding: 45px 35px; }
+  .book-venue-image { width: 100%; }
+  .book-venue-image img { width: 100%; max-width: 100%; height: 350px; }
+  .book-venue-content { width: 100%; }
+}
+
+@media (max-width: 768px) {
+  .book-venue-section { padding: 70px 20px; }
+  .book-venue-container { max-width: 100%; padding: 28px; border-radius: 26px; }
+  .book-venue-image img { height: 250px; border-radius: 18px; }
+  .book-venue-content h2 { font-size: 28px; }
+  .book-venue-content p { font-size: 15px; line-height: 1.7; }
+  .book-venue-btn { font-size: 18px; padding: 14px 24px; }
+}
+
+/* =========================================================
+   STATS
+   ========================================================= */
+.stats-section {
+  padding:3.5rem 2.5rem;
+  background: #F8F0E6;
+  padding: 100px 0 70px;
+}
+
+.stats-container {
+  width: 1500px;
+  max-width: 92%;
+  margin: 0 auto 70px;
+  display: flex;
+  justify-content: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+
+.stats-card {
+  width: 250px;
+  height: 250px;
+  border-radius: 6px;
+  border: 2px solid #E0B170;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: .35s;
+}
+.stats-card:hover {
+  transform: translateY(-6px);
+}
+
+.stats-card-maroon { background: #8B1639; }
+.stats-card-maroon h2, .stats-card-maroon p { color: #FFF0DB; }
+
+.stats-card-cream { background: #FFF0DB; }
+.stats-card-cream h2, .stats-card-cream p { color: #8B1639; }
+
+.stats-card h2 {
+ font-family: "Allrounder Monument Test";
+  font-size: 45px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.stats-card p {
+ font-family: "Allrounder Monument Test";
+  font-size: 22px;
+  line-height: 1.05;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-color:#FFF0DB;
+}
+
+.stats-heading {
+  text-align: center;
+  width: 900px;
+  max-width: 92%;
+  margin: auto;
+}
+.stats-heading .section-divider {
+  width: 110px;
+  margin: 0 auto 18px;
+}
+.stats-heading h2 {
+ font-family: "Allrounder Monument Test";
+  font-size: 28px;
+  font-weight: 500;
+  color: #8B1639;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.stats-heading p {
+  font-family: "Allrounder Monument Test";
+  font-size: 22px;
+  line-height: 1.5;
+  color: #6A564E;
+  text-transform: uppercase;
+}
+
+@media (max-width: 992px) {
+  .stats-container {
+    gap: 18px;
+  }
+
+  .stats-card {
+    width: 210px;
+    height: 210px;
+  }
+
+  .stats-card h2 {
+    font-size: 46px;
+  }
+
+  .stats-card p {
+    font-size: 18px;
+  }
+
+  .stats-heading h2 {
+    font-size: 30px;
+  }
+
+  .stats-heading p {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .stats-card {
+    width: calc(50% - 12px);
+    max-width: 170px;
+    height: 170px;
+  }
+
+  .stats-card h2 {
+    font-size: 36px;
+  }
+
+  .stats-card p {
+    font-size: 14px;
+    line-height: 1.2;
+  }
+}
+
+
+  
+/* =========================================================
+   FEATURES
+   ========================================================= */
+
+.features-section {
+    padding: 3rem 2.5rem 2rem;
+    background: var(--cream);
+}
+
+.features-grid {
+    max-width: 1300px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    align-items: stretch;
+}
+
+.features-card {
+    background: #FFF7EB;
+    border: 1px solid #E5B66A;
+    border-radius: 8px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    min-height: 320px;
+}
+
+/* Icon */
+
+.features-icon{
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 24px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border:1px solid #FFCF8D;
+    border-radius:50%;
+    background:#FFF7EB;
+}
+
+.features-icon img{
+    width:44px;
+    height:44px;
+    object-fit:contain;
+}
+
+/* Heading */
+
+.features-card h3{
+    font-family:"Allrounder Monument Test";
+    font-size:20px;
+    font-weight:500;
+    line-height:1.4;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+    color:#8C1739;
+    margin-bottom:12px;
+}
+
+/* Description */
+
+.features-card p{
+    font-family:"Mona Sans SemiExpanded";
+    font-size:14px;
+    line-height:1.65;
+    font-weight:400;
+    color:#8C1739;
+}
+
+/* Tablet */
+
+@media (max-width:992px){
+
+.features-grid{
+    grid-template-columns:repeat(2,1fr);
+}
+
+}
+
+/* Mobile */
+
+@media (max-width:768px){
+
+.features-section{
+    padding:3rem 1rem;
+}
+
+.features-grid{
+    grid-template-columns:1fr;
+}
+
+.features-icon{
+    width:72px;
+    height:72px;
+}
+
+.features-icon img{
+    width:36px;
+    height:36px;
+}
+
+}
+
+/* =========================================================
+   HOSPITALITY PARTNERS
+   ========================================================= */
+.partners-section {
+  padding:3.5rem 2.5rem;
+  background: #F8F0E6;
+}
+
+.partners-heading {
+  text-align: center;
+  width: 850px;
+  max-width: 90%;
+  margin: 0 auto 70px;
+}
+.partners-heading .section-divider {
+  width: 110px;
+  margin: 0 auto 18px;
+}
+.partners-heading h2 {
+  font-family: "Allrounder Monument Test";
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #8B1639;
+  margin-bottom: 16px;
+}
+.partners-heading p {
+ font-family: "Allrounder Monument Test";
+  font-size: 20px;
+  line-height: 1.45;
+  color: #61313F;
+  text-transform: uppercase;
+}
+
+.partners-grid {
+  width: 1500px;
+  max-width: 92%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 45px;
+  flex-wrap: wrap;
+}
+
+.partner-logo{
+    object-fit: contain;
+    object-position: center;
+    display: block;
+    opacity: 0.95;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.partner-logo:hover{
+    transform: translateY(-4px);
+    opacity: 1;
+}
+
+/* Individual Logo Sizes */
+/* Desktop */
+.taj-logo{
+    width: 82px;
+    height: 72px;
+}
+
+.marriott-logo{
+    width: 145px;
+    height: 46px;
+}
+
+.novotel-logo{
+    width: 155px;
+    height: 60px;
+}
+
+.itc-logo{
+    width: 142px;
+    height: 76px;
+}
+
+.hyatt-logo{
+    width: 138px;
+    height: 32px;
+}
+
+.leela-logo{
+    width: 135px;
+    height: 88px;
+}
+
+/* ==========================
+   Hospitality Partners
+========================== */
+
+.partners-grid{
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+/* Tablet */
+@media (max-width: 992px){
+    .partners-grid{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px 24px;
+        justify-items: center;
+        align-items: center;
+    }
+}
+
+/* Mobile */
+@media (max-width: 768px){
+    .partners-grid{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px 20px;
+        justify-items: center;
+        align-items: center;
+    }
+
+    .partner-logo{
+        max-width: 100%;
+        height: auto;
+    }
+
+    .taj-logo{ width:60px; }
+    .marriott-logo{ width:105px; }
+    .novotel-logo{ width:110px; }
+    .itc-logo{ width:100px; }
+    .hyatt-logo{ width:95px; }
+    .leela-logo{ width:90px; }
+}
+
+/* Small Mobile */
+@media (max-width: 480px){
+    .partners-grid{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px 12px;
+    }
+
+    .taj-logo{ width:50px; }
+    .marriott-logo{ width:90px; }
+    .novotel-logo{ width:95px; }
+    .itc-logo{ width:85px; }
+    .hyatt-logo{ width:80px; }
+    .leela-logo{ width:78px; }
+}
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer-section {
+   padding:2rem 2.5rem;
+  background: #8B1639;
+  padding: 90px 0;
+}
+
+.footer-container {
+  width: 1450px;
+  max-width: 92%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 90px;
+}
+
+.footer-logo { flex: 1; }
+/* Footer Logo */
+.footer-logo {
+    flex-shrink: 0;
+}
+
+.footer-logo img {
+    width: 218px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.footer-links,
+.footer-contact {
+  flex: 1;
+}
+
+.footer-section h3 {
+ font-family: "Allrounder Monument Test";
+  font-size: 20px;
+  font-weight: 500;
+  color: #F8E5CC;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links li { margin-bottom: 14px; }
+
+.footer-section a,
+.footer-section p {
+  font-family: "Allrounder Monument Test";
+  font-size: 18px;
+  line-height: 1.6;
+  color: #F8E5CC;
+  text-decoration: none;
+  letter-spacing: .5px;
+}
+.footer-section a:hover { color: #FFFFFF; }
+
+.footer-contact p { margin-bottom: 16px; }
+
+/* Quick Links list items — body font instead of the display font.
+   ".footer-links li a" beats ".footer-section a" on specificity
+   regardless of source order. */
+.footer-links li a{
+  font-family: "Mona Sans SemiExpanded", sans-serif;
+  letter-spacing: normal;
+}
+
+/* All text inside Contact block (address, "EMAIL:" / "PHONE:"
+   labels included) — body font. Boosted specificity so it
+   reliably overrides the shared .footer-section p rule above. */
+.footer-section .footer-contact p{
+  font-family: "Mona Sans SemiExpanded", sans-serif;
+  letter-spacing: normal;
+}
+
+/* Email and phone links — kept explicit for clarity, though now
+   redundant with the parent rule above since both resolve to the
+   same font. */
+.footer-section a.footer-email{
+  font-family: "Mona Sans SemiExpanded", sans-serif;
+  font-size: 20px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.footer-section p.footer-address,
+.footer-section a.footer-phone{
+  font-family: "Mona Sans SemiExpanded", sans-serif;
+  letter-spacing: normal;
+}
+
+@media (max-width: 992px) {
+  .footer-container { flex-direction: column; gap: 45px; }
+  .footer-logo { text-align: center; }
+  .footer-logo img { margin: auto; }
+}
+
+@media (max-width: 768px) {
+  .footer-section { padding: 60px 20px; }
+  .footer-section h3 { font-size: 28px; }
+  .footer-section p, .footer-section a { font-size: 16px; }
+  .footer-section a.footer-email { font-size: 13px; }
+  .footer-section p.footer-address,
+  .footer-section a.footer-phone { font-size: 16px; }
+  .footer-logo img { width: 180px; }
+}
+
+
+/* =========================================================
+   FLOATING ACTION BUTTONS (WhatsApp + Enquiry)
+   ========================================================= */
+.floating-actions {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 1100;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.floating-btn {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* WhatsApp button keeps its own solid green circle baked into
+   its image — just add the lift shadow here */
+.floating-btn[aria-label="Chat with us on WhatsApp"] {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Enquiry — bare "?" character, no icon file, no shape/circle at all.
+   Same size as WhatsApp button now (52px, inherited from .floating-btn). */
+.floating-btn-text {
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: #6E1731;
+  box-shadow: none;
+  color: #F3E5D6;
+  font-family: 'Allrounder Monument Test', serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.floating-btn:hover {
+  transform: translateY(-4px) scale(1.05);
+}
+
+.floating-btn[aria-label="Chat with us on WhatsApp"]:hover {
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+}
+
+.floating-btn-text:hover {
+  color: #6E1731;
+}
+
+.floating-btn img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+@media (max-width: 768px) {
+  .floating-actions {
+    right: 28px;
+    bottom: 16px;
+    gap: 10px;
+  }
+  .floating-btn {
+    width: 44px;
+    height: 44px;
+  }
+  .floating-btn-text {
+    font-size: 26px;
+  }
+}
+
+
+/* =========================================================
+   HEADER — RESPONSIVE NAV (missing from original file)
+   ========================================================= */
+@media (max-width: 992px) {
+  .header-nav-left,
+  .header-nav-right {
+    display: none;
+  }
+
+  .header-menu-toggle {
+    display: flex;
+  }
+
+  .header-container {
+    height: auto;
+    padding: 1rem 1.5rem;
+  }
+
+  .header-logo-img {
+    height: 48px;
+  }
+}
+
+/* Mobile drawer only appears once JS adds .is-open (see note below) */
+.header-mobile-nav.is-open {
+  display: flex;
+}
+
+/* Simple hamburger -> X animation when open */
+.header-menu-toggle.is-active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.header-menu-toggle.is-active span:nth-child(2) {
+  opacity: 0;
+}
+.header-menu-toggle.is-active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* =========================================================
+   LOVE STORIES GRID — RESPONSIVE (missing from original file)
+   ========================================================= */
+@media (max-width: 992px) {
+  .stories-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.85rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .stories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+  }
+  .story-overlay h3 {
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   WEDDING SERVICES GRID — RESPONSIVE (missing from original file)
+   ========================================================= */
+@media (max-width: 1200px) {
+  .wedding-services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .wedding-services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wedding-services-overlay h3 {
+    font-size: 18px;
+  }
+  .wedding-services-overlay {
+    padding: 12px;
+  }
+}
+
+/* =========================================================
+   HERO TITLE — TABLET GAP
+   (mobile fix already exists at 768px, but 769–992px was
+   still forcing white-space: nowrap and could overflow)
+   ========================================================= */
+@media (max-width: 992px) and (min-width: 769px) {
+  .hero-title {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    white-space: normal;
+  }
+}
+
+.header-mobile-nav.open {
+  display: flex;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1050;
+  box-shadow: 0 12px 30px rgba(43, 27, 31, 0.15);
+}
