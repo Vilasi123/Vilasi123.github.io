@@ -525,3 +525,119 @@
     font-size: 26px;
   }
 }
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+.footer-section {
+   padding:2rem 2.5rem;
+  background: #8B1639;
+  padding: 90px 0;
+}
+
+.footer-container {
+  width: 1450px;
+  max-width: 92%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 90px;
+}
+
+.footer-logo { flex: 1; }
+/* Footer Logo */
+.footer-logo {
+    flex-shrink: 0;
+}
+
+.footer-logo img {
+    width: 218px;
+    max-width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.footer-links,
+.footer-contact {
+  flex: 1;
+}
+
+.footer-section h3 {
+ font-family: "Allrounder Monument Test";
+  font-size: 20px;
+  font-weight: 500;
+  color: #F8E5CC;
+  letter-spacing: 1px;
+  margin-bottom: 28px;
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-links li { margin-bottom: 14px; }
+
+.footer-section a,
+.footer-section p {
+  font-family: "Allrounder Monument Test";
+  font-size: 18px;
+  line-height: 1.6;
+  color: #F8E5CC;
+  text-decoration: none;
+  letter-spacing: .5px;
+}
+.footer-section a:hover { color: #FFFFFF; }
+
+.footer-contact p { margin-bottom: 16px; }
+
+/* Quick Links list items — body font instead of the display font.
+   ".footer-links li a" beats ".footer-section a" on specificity
+   regardless of source order. */
+.footer-links li a{
+  font-family: "Mona Sans SemiExpanded", sans-serif;
+  letter-spacing: normal;
+}
+
+/* All text inside Contact block (address, "EMAIL:" / "PHONE:"
+   labels included) — body font. Boosted specificity so it
+   reliably overrides the shared .footer-section p rule above. */
+.footer-section .footer-contact p{
+  font-family: "Mona Sans SemiExpanded", sans-serif;
+  letter-spacing: normal;
+}
+
+/* Email and phone links — kept explicit for clarity, though now
+   redundant with the parent rule above since both resolve to the
+   same font. */
+.footer-section a.footer-email{
+  font-family: "Mona Sans SemiExpanded", sans-serif;
+  font-size: 20px;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.footer-section p.footer-address,
+.footer-section a.footer-phone{
+  font-family: "Mona Sans SemiExpanded", sans-serif;
+  letter-spacing: normal;
+}
+
+@media (max-width: 992px) {
+  .footer-container { flex-direction: column; gap: 45px; }
+  .footer-logo { text-align: center; }
+  .footer-logo img { margin: auto; }
+}
+
+@media (max-width: 768px) {
+  .footer-section { padding: 60px 20px; }
+  .footer-section h3 { font-size: 28px; }
+  .footer-section p, .footer-section a { font-size: 16px; }
+  .footer-section a.footer-email { font-size: 16px; }
+  .footer-section p.footer-address,
+  .footer-section a.footer-phone { font-size: 16px; }
+  .footer-logo img { width: 180px; }
+}

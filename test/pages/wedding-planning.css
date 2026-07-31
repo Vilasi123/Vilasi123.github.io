@@ -607,7 +607,7 @@
   .footer-section { padding: 60px 20px; }
   .footer-section h3 { font-size: 28px; }
   .footer-section p, .footer-section a { font-size: 16px; }
-  .footer-section a.footer-email { font-size: 13px; }
+  .footer-section a.footer-email { font-size: 16px; }
   .footer-section p.footer-address,
   .footer-section a.footer-phone { font-size: 16px; }
   .footer-logo img { width: 180px; }
