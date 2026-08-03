@@ -83,3 +83,63 @@ document.addEventListener('DOMContentLoaded', () => {
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 });
+
+const trigger = document.getElementById('magicOfferTrigger');
+const menu = document.getElementById('magicOfferMenu');
+
+trigger.addEventListener('click', function(e) {
+  e.preventDefault(); // "#about" var navigate honar nahi
+  menu.classList.toggle('active');
+});
+
+// menu bahercha click kelyavar band व्हावा
+document.addEventListener('click', function(e) {
+  if (!trigger.contains(e.target) && !menu.contains(e.target)) {
+    menu.classList.remove('active');
+  }
+});
+
+
+const lightbox = document.getElementById('videoLightbox');
+const lightboxVideo = document.getElementById('lightboxVideo');
+const lightboxClose = document.getElementById('lightboxClose');
+
+document.querySelectorAll('.story-card').forEach(function(card, index) {
+  const cardVideo = card.querySelector('video');
+  const btn = card.querySelector('.play-btn');
+
+  if (!btn || !cardVideo) {
+    console.warn('Missing button or video in story-card #' + index, card);
+    return; // is card ला skip kara, baकीचे chalू dеto
+  }
+
+  btn.addEventListener('click', function() {
+    lightboxVideo.src = cardVideo.getAttribute('src');
+    lightbox.classList.add('active');
+    lightboxVideo.play();
+  });
+});
+
+function closeLightbox() {
+  lightbox.classList.remove('active');
+  lightboxVideo.pause();
+  lightboxVideo.src = '';
+}
+
+if (lightboxClose) {
+  lightboxClose.addEventListener('click', closeLightbox);
+}
+
+if (lightbox) {
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) {
+      closeLightbox();
+    }
+  });
+}
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    closeLightbox();
+  }
+});

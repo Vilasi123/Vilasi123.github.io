@@ -17,7 +17,25 @@
 
     <nav class="header-nav-left">
       <a href="#home" class="header-nav-link header-nav-active">Home</a>
-      <a href="#about" class="header-nav-link">Magic We Offer</a>
+        
+  <div class="nav-item-dropdown">
+    <a href="#about" class="header-nav-link" id="magicOfferTrigger">
+      Magic We Offer
+    </a>
+    
+    <div class="mega-menu" id="magicOfferMenu">
+      <div class="mega-menu-item">Venue & Destination Selection</div>
+      <div class="mega-menu-item">Wedding Planning</div>
+      <div class="mega-menu-item">Entertainment, Design & Décor</div>
+      <div class="mega-menu-item">Wedding Hospitality</div>
+      <div class="mega-menu-item">Gifting & Hampers</div>
+      <div class="mega-menu-item">Wedding Invitations, Stationery & Collaterals</div>
+      <div class="mega-menu-item">Photography & Videography</div>
+      <div class="mega-menu-item">Vendor Selection & Management</div>
+      <div class="mega-menu-item">Travel & Logistics Arrangements</div>
+      <div class="mega-menu-item">MICE & More</div>
+    </div>
+  </div>
       <a href="#stories" class="header-nav-link">Dream Weddings</a>
       <a href="#services" class="header-nav-link">Gallery</a>
     </nav>
@@ -154,6 +172,82 @@
     </article>
 
   </div>
+</section>
+
+<section class="stories-section" id="stories">
+  <div class="stories-heading fade-in">
+    <img src="assets/design1.svg" alt="Section Divider" class="section-divider">
+  </div>
+
+ <div class="stories-grid">
+
+  <article class="story-card fade-in-up">
+    <video src="assets/SAMPLES%20FEB%202026%20REELS_1.mp4" muted loop playsinline></video>
+    <button class="play-btn" aria-label="Play video">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 5v14l11-7L8 5Z" fill="currentColor"/>
+      </svg>
+    </button>
+  </article>
+
+  <article class="story-card fade-in-up">
+    <video src="assets/SAMPLES%20FEB%202026%20REELS_2.mp4" muted loop playsinline></video>
+    <button class="play-btn" aria-label="Play video">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 5v14l11-7L8 5Z" fill="currentColor"/>
+      </svg>
+    </button>
+  </article>
+
+  <article class="story-card fade-in-up">
+    <video src="assets/SAMPLES%20FEB%202026%20REELS_3.mp4" muted loop playsinline></video>
+    <button class="play-btn" aria-label="Play video">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 5v14l11-7L8 5Z" fill="currentColor"/>
+      </svg>
+    </button>
+  </article>
+
+  <article class="story-card fade-in-up">
+    <video src="assets/SAMPLES%20FEB%202026%20REELS_4.mp4" muted loop playsinline></video>
+    <button class="play-btn" aria-label="Play video">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 5v14l11-7L8 5Z" fill="currentColor"/>
+      </svg>
+    </button>
+  </article>
+
+  <article class="story-card fade-in-up">
+    <video src="assets/SAMPLES%20FEB%202026%20REELS_6.mp4" muted loop playsinline></video>
+    <button class="play-btn" aria-label="Play video">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 5v14l11-7L8 5Z" fill="currentColor"/>
+      </svg>
+    </button>
+  </article>
+
+  <article class="story-card fade-in-up">
+    <video src="assets/SAMPLES%20FEB%202026%20REELS_5.mp4" muted loop playsinline></video>
+    <button class="play-btn" aria-label="Play video">
+      <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 5v14l11-7L8 5Z" fill="currentColor"/>
+      </svg>
+    </button>
+  </article>
+
+
+  <div class="video-lightbox" id="videoLightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close video">&times;</button>
+  <video id="lightboxVideo" controls playsinline></video>
+ /div>
+
+</div>
+
+<!-- Fullscreen Video Lightbox -->
+<div class="video-lightbox" id="videoLightbox">
+  <button class="lightbox-close" id="lightboxClose" aria-label="Close video">&times;</button>
+  <video id="lightboxVideo" controls playsinline></video>
+</div>
 </section>
 
 <!-- ================= DESTINATIONS (What We Do) ================= -->
@@ -332,7 +426,7 @@
                 wedding memories.
             </p>
 
-            <a href="#" class="book-venue-btn">
+            <a href="pages/contact.html" class="book-venue-btn">
                 CHECK AVAILABILITY
                 <span>»</span>
             </a>
@@ -563,8 +657,8 @@
             <h3>QUICK LINKS</h3>
 
           <ul>
-            <li><a href="#contact">Contact Us</a></li>
-            <li><a href="#">Our Blog</a></li>
+            <li><a href="pages/contact.html">Contact Us</a></li>
+            <li><a href="#"> FAQs</a></li>
             <li><a href="#">Career</a></li>
             <li><a href="#">Our Story</a></li>
             <li><a href="#">Privacy Policy</a></li>

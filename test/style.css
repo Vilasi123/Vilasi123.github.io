@@ -86,6 +86,134 @@ section { position: relative; }
   *, *::before, *::after { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
 }
 
+
+.header-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.nav-item-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  margin-left: 4px;
+  display: inline-block;
+  transition: transform .25s ease;
+}
+
+.mega-menu.active + .dropdown-arrow,
+#magicOfferTrigger.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+/* ---------- Desktop Mega Menu (Vertical) ---------- */
+.mega-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #F8F3EB;
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid #FFCF8D;
+  z-index: 999;
+  width: 260px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.mega-menu.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-menu-item {
+  color: #8C1739;
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: left;
+  padding: 12px 8px;
+  cursor: default;
+  border-bottom: 1px solid rgba(140, 23, 57, 0.15);
+  font-family: 'Allrounder Monument Test';
+}
+
+.mega-menu-item:last-child {
+  border-bottom: none;
+}
+
+.mega-menu-item:hover {
+  color: #8C1739;
+  opacity: 0.65;
+}
+
+/* ---------- Tablet (≤1024px) ---------- */
+@media (max-width: 1024px) {
+  .mega-menu {
+    width: 240px;
+    padding: 20px;
+  }
+
+  .mega-menu-item {
+    font-size: 12.5px;
+    padding: 10px 8px;
+  }
+}
+
+/* ---------- Mobile (≤768px) ---------- */
+@media (max-width: 768px) {
+  .header-nav-left {
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    gap: 0;
+  }
+
+  .header-nav-link {
+    width: 100%;
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(255,255,255,.1);
+  }
+
+  .nav-item-dropdown {
+    width: 100%;
+    display: block;
+  }
+
+  .mega-menu {
+    display: none;
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    overflow-y: visible;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    border-top: 1px solid #8C1739;
+    background: #F8F3EB;
+    padding: 8px 0 8px 16px;
+  }
+
+  .mega-menu.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mega-menu-item {
+    text-align: left;
+    width: 100%;
+    padding: 12px 8px;
+    border-bottom: 1px solid rgba(140, 23, 57, 0.15);
+  }
+}
+
 /* =========================================================
    SHARED UTILITIES
    (used across multiple sections — not tied to any one)
@@ -104,6 +232,7 @@ section { position: relative; }
   font-size: 16px;
   font-weight: 400;
   letter-spacing: 0.08em;
+  color: #F8F3EB;
 }
 
 .btn-outline {
@@ -119,7 +248,7 @@ section { position: relative; }
 
 .btn-solid {
   background: var(--maroon);
-  color: var(--white);
+  color:  #F8F3EB;
   box-shadow: var(--shadow-soft);
 }
 .btn-solid:hover {
@@ -210,7 +339,7 @@ section { position: relative; }
 
 .header-nav-link {
   font-family: "Allrounder Monument Test", sans-serif;
-  font-size: 0.7rem;
+  font-size: 12px;
   font-weight: 400;
   letter-spacing: 0.06em;
   color: var(--maroon);
@@ -612,7 +741,6 @@ section { position: relative; }
 .stories-section {
      padding-bottom: 3rem; /* kiwa jast asel */
      margin-bottom: 0;
-
   background: var(--cream);
 }
 
@@ -684,6 +812,149 @@ section { position: relative; }
   filter: brightness(0) invert(1);
   margin: 0 auto;
 }
+
+.story-card video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.play-btn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: #FFF7EB;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .25s ease, transform .25s ease;
+  z-index: 5;
+}
+
+.play-btn:hover {
+  background: #FFF7EB;
+  transform: translate(-50%, -50%) scale(1.08);
+}
+
+.play-btn svg {
+  width: 22px;
+  height: 22px;
+  color: #8C1739;
+  margin-left: 3px;
+}
+
+/* ---------- Fullscreen Lightbox ---------- */
+.video-lightbox {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-lightbox.active {
+  display: flex;
+}
+
+.video-lightbox video {
+  max-width: 90vw;
+  max-height: 85vh;
+  border-radius: 8px;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  background: none;
+  border: none;
+  color: #F8F3EB;
+  font-size: 40px;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.lightbox-close:hover {
+  color: #8C1739;
+}
+
+/* ---------- Tablet (≤1024px) ---------- */
+@media (max-width: 1024px) {
+  .stories-section {
+    padding: 60px 24px;
+  }
+
+  .stories-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+}
+
+/* ---------- Mobile (≤768px) ---------- */
+@media (max-width: 768px) {
+  .stories-section {
+    padding: 40px 16px;
+  }
+
+  .stories-heading h2 {
+    font-size: 24px;
+  }
+
+  .stories-heading p {
+    font-size: 14px;
+  }
+
+  .stories-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .story-card {
+    aspect-ratio: 4 / 5;
+  }
+
+  .play-btn {
+    width: 46px;
+    height: 46px;
+  }
+
+  .play-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .video-lightbox video {
+    max-width: 95vw;
+    max-height: 80vh;
+  }
+
+  .lightbox-close {
+    top: 16px;
+    right: 20px;
+    font-size: 32px;
+  }
+}
+
+/* ---------- Small Mobile (≤480px) ---------- */
+@media (max-width: 480px) {
+  .story-card {
+    aspect-ratio: 1 / 1;
+  }
+}
+
 
 
 /* =========================================================
