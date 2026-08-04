@@ -70,12 +70,13 @@ img{max-width:100%;display:block;}
   z-index:1000;
   background:#fff7eb;
   border-bottom:2px solid #8c1739;
-  padding:20px 0;
+  padding:28px 0;
   transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .header-section.scrolled{
   box-shadow: 0 8px 30px rgba(43, 27, 31, 0.08);
 }
+
 .header-container{
   max-width:1200px;
   margin:0 auto;
@@ -83,13 +84,13 @@ img{max-width:100%;display:block;}
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:24px;
+  gap:28px;
 }
 .header-nav-left,
 .header-nav-right{
   display:flex;
   align-items:center;
-  gap:28px;
+  gap:30px;
   flex:1;
 }
 .header-nav-right{
@@ -111,7 +112,7 @@ img{max-width:100%;display:block;}
   display:block;
 }
 .header-logo-img{
-  height:46px;
+  height:50px;
   width:auto;
 }
 .contact-plan-wedding-btn{
