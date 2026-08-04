@@ -106,7 +106,7 @@ section { position: relative; }
 }
 
 .mega-menu.active + .dropdown-arrow,
-#magicOfferTrigger.active .dropdown-arrow {
+[id^="magicOfferTrigger"].active .dropdown-arrow {
   transform: rotate(180deg);
 }
 
@@ -115,8 +115,7 @@ section { position: relative; }
   display: none;
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   background: #F8F3EB;
   padding: 24px;
   border-radius: 8px;
@@ -133,16 +132,15 @@ section { position: relative; }
 }
 
 .mega-menu-item {
+  display: block;
   color: #8C1739;
   font-size: 10px;
   line-height: 1.2;
   text-align: left;
   padding: 12px 8px;
-  cursor: default;
   border-bottom: 1px solid rgba(140, 23, 57, 0.15);
   font-family: 'Allrounder Monument Test';
-   text-decoration: none;
-  display: block;
+  text-decoration: none;
 }
 
 .mega-menu-item:last-child {
@@ -167,7 +165,10 @@ section { position: relative; }
   }
 }
 
-/* ---------- Mobile (≤768px) ---------- */
+/* ---------- Mobile (≤768px) — desktop nav wrapper, hidden on
+   mobile anyway once .header-nav-left is display:none below;
+   kept for tablet widths between 768px and 992px where the
+   desktop nav may still be visible. ---------- */
 @media (max-width: 768px) {
   .header-nav-left {
     flex-direction: column;
@@ -213,6 +214,66 @@ section { position: relative; }
     width: 100%;
     padding: 12px 8px;
     border-bottom: 1px solid rgba(140, 23, 57, 0.15);
+  }
+}
+
+/* =========================================================
+   MOBILE DRAWER — "Magic We Offer" dropdown
+   Scoped to .header-mobile-nav specifically (id="mobileNav"),
+   which uses its own trigger/menu ids (magicOfferTriggerMobile /
+   magicOfferMenuMobile). Applies at the same width the hamburger
+   menu takes over (≤992px, see the HEADER — RESPONSIVE NAV block
+   further down).
+   ========================================================= */
+@media (max-width: 992px) {
+  .header-mobile-nav .nav-item-dropdown {
+    width: 100%;
+    display: block;
+  }
+
+  .header-mobile-nav #magicOfferTriggerMobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .header-mobile-nav .mega-menu {
+    position: static;
+    transform: none;
+    width: 100%;
+    max-width: 100%;
+    max-height: none;
+    overflow-y: visible;
+    box-shadow: none;
+    border-radius: 0;
+    border: 1px solid #FFCF8D;
+    background: #F8F0E6;
+    padding: 8px 0;
+  }
+
+  .header-mobile-nav .mega-menu.active {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .header-mobile-nav .mega-menu-item {
+    text-align: left;
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 13px;
+    border-bottom: 1px solid rgba(140, 23, 57, 0.1);
+  }
+
+  .header-mobile-nav .mega-menu-item:last-child {
+    border-bottom: none;
+  }
+
+  .header-mobile-nav .mega-menu-item:active,
+  .header-mobile-nav .mega-menu-item:hover {
+    background: transparent;
+    border-left: 3px solid #8C1739;
+    padding-left: 13px;
   }
 }
 
@@ -409,6 +470,9 @@ section { position: relative; }
 }
 .header-mobile-nav .header-nav-link { padding: 0.9em 0; }
 .header-mobile-nav .btn { margin-top: 0.6rem; text-align: center; }
+
+
+
 
 /* =========================================================
    HERO
@@ -706,6 +770,7 @@ section { position: relative; }
 
     .about-image{
         max-width: 100%;
+        margin-top: 24px;
     }
 }
 
@@ -920,12 +985,12 @@ section { position: relative; }
   }
 
   .stories-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
   }
 
   .story-card {
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 3 / 4;
   }
 
   .play-btn {
@@ -951,11 +1016,8 @@ section { position: relative; }
 }
 
 /* ---------- Small Mobile (≤480px) ---------- */
-@media (max-width: 480px) {
-  .story-card {
-    aspect-ratio: 1 / 1;
-  }
-}
+/* aspect-ratio stays 4/5 (set at 768px) — square (1/1) removed
+   since couple photos look better in portrait, not square. */
 
 
 
@@ -2235,7 +2297,7 @@ font-family: "Allrounder Monument Test";
 /* =========================================================
    LOVE STORIES GRID — RESPONSIVE (missing from original file)
    ========================================================= */
-@media (max-width: 992px) {
+@media (max-width: 992px) and (min-width: 769px) {
   .stories-grid {
     grid-template-columns: repeat(3, 1fr);
     gap: 0.85rem;
@@ -2243,10 +2305,6 @@ font-family: "Allrounder Monument Test";
 }
 
 @media (max-width: 640px) {
-  .stories-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.7rem;
-  }
   .story-overlay h3 {
     font-size: 15px;
   }

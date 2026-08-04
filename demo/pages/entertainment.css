@@ -230,8 +230,8 @@
     box-shadow:none;
     border-radius:0;
     border:none;
-    border-top:1px solid rgba(140, 23, 57, 0.1);
-    background:#FFF0DB;
+    background: #F8F0E6;
+    border: 1px solid #FFCF8D;
     padding:8px 32px;
   }
 

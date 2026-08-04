@@ -73,7 +73,7 @@ img{max-width:100%;display:block;}
   z-index:1000;
   background:#fff7eb;
   border-bottom:2px solid #8c1739;
-  padding:18px 0;
+  padding:28px 0;
   transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -83,7 +83,7 @@ img{max-width:100%;display:block;}
 .header-container{
   max-width:1200px;
   margin:0 auto;
-  padding: 20px 0;   
+  padding: 0 32px;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -173,8 +173,8 @@ img{max-width:100%;display:block;}
 .header-mobile-nav{
   display:none;
   flex-direction:column;
-  gap:18px;
-  padding:20px 32px 28px;
+  gap:4px;
+  padding:12px 32px 16px;
   background:var(--stat-bg);
   border-top:1px solid var(--stat-rule);
 }
@@ -230,13 +230,14 @@ img{max-width:100%;display:block;}
   transform: rotate(180deg);
 }
 
-/* ---------- Desktop Mega Menu (Vertical) ---------- */
+/* ---------- Desktop Mega Menu (Vertical) ----------
+   left:0 (not centered) so it opens directly under the
+   trigger's left edge. */
 .mega-menu {
   display: none;
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   background: #F8F3EB;
   padding: 24px;
   border-radius: 8px;
@@ -253,13 +254,14 @@ img{max-width:100%;display:block;}
   flex-direction: column;
 }
 
+/* mega-menu-item is an <a> tag — no cursor:default, it's a real
+   clickable link now. */
 .mega-menu-item {
   color: #8C1739;
   font-size: 10px;
   line-height: 1.2;
   text-align: left;
   padding: 12px 8px;
-  cursor: default;
   border-bottom: 1px solid rgba(140, 23, 57, 0.15);
   font-family: 'Allrounder Monument Test';
    text-decoration: none;
@@ -319,9 +321,8 @@ img{max-width:100%;display:block;}
     overflow-y: visible;
     box-shadow: none;
     border-radius: 0;
-    border: none;
-    border-top: 1px solid #8C1739;
-    background: #F8F3EB;
+    border: 1px solid #FFCF8D;
+    background: #F8F0E6;
     padding: 8px 0 8px 16px;
   }
 
@@ -343,7 +344,8 @@ img{max-width:100%;display:block;}
    ========================================================= */
 .stationery-page{
   overflow-x:hidden;
-  padding-top: 100px;  
+  padding-top: 100px;
+  padding-bottom: 60px;
 }
 
 .stationery-heading{
@@ -480,7 +482,9 @@ font-family:'Allrounder Monument Test';
    ========================================================= */
 .stationery-closing-statement{
     max-width:820px;
-   margin: 50px auto 50px; /* top right/left bottom */
+   margin: 50px auto 0; /* bottom handled by .stationery-page's
+                            padding-bottom so it can't collapse
+                            against the footer */
     font-family:"Allrounder Monument Test";
     font-weight:400;
     font-size:15px;

@@ -2,7 +2,8 @@
    WEDDINGS BY M&M — script.js
    Handles: sticky header shrink state, mobile nav toggle,
    scroll-triggered fade-in animations, active nav link sync,
-   and current year in footer.
+   "Magic We Offer" dropdown (desktop + mobile/tablet), video
+   lightbox, and current year in footer.
    ========================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -34,7 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Close mobile nav automatically when a link is tapped
+    // (but NOT when the "Magic We Offer" trigger itself is tapped —
+    // that should open the submenu instead of closing the whole drawer)
     mobileNav.querySelectorAll('a').forEach((link) => {
+      if (link.id && link.id.startsWith('magicOfferTrigger')) return;
       link.addEventListener('click', () => {
         mobileNav.classList.remove('open');
         menuToggle.classList.remove('is-active');
@@ -78,28 +82,48 @@ document.addEventListener('DOMContentLoaded', () => {
     revealTargets.forEach((el) => el.classList.add('is-visible'));
   }
 
+  /* ---------- 4. "Magic We Offer" dropdown — desktop + mobile/tablet
+     Loops over every .nav-item-dropdown on the page, so it works
+     for however many trigger/menu pairs exist (e.g. one in the
+     desktop nav with id="magicOfferTrigger", another in the
+     mobile drawer with id="magicOfferTriggerMobile"). ---------- */
+  document.querySelectorAll('.nav-item-dropdown').forEach((dropdown) => {
+    const trigger = dropdown.querySelector('[id^="magicOfferTrigger"]');
+    const menu = dropdown.querySelector('.mega-menu');
+    if (!trigger || !menu) return;
+
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault(); // don't navigate on "#about" or similar
+      const isOpen = menu.classList.contains('active');
+
+      // Close any other open dropdown first (only one open at a time)
+      document.querySelectorAll('.mega-menu.active').forEach((m) => {
+        if (m !== menu) m.classList.remove('active');
+      });
+      document.querySelectorAll('[id^="magicOfferTrigger"].active').forEach((t) => {
+        if (t !== trigger) t.classList.remove('active');
+      });
+
+      menu.classList.toggle('active', !isOpen);
+      trigger.classList.toggle('active', !isOpen);
+    });
+  });
+
+  // Close any open dropdown when clicking outside it
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.nav-item-dropdown')) {
+      document.querySelectorAll('.mega-menu.active').forEach((m) => m.classList.remove('active'));
+      document.querySelectorAll('[id^="magicOfferTrigger"].active').forEach((t) => t.classList.remove('active'));
+    }
+  });
+
   /* ---------- 5. Footer current year ---------- */
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
 });
 
-const trigger = document.getElementById('magicOfferTrigger');
-const menu = document.getElementById('magicOfferMenu');
-
-trigger.addEventListener('click', function(e) {
-  e.preventDefault(); // "#about" var navigate honar nahi
-  menu.classList.toggle('active');
-});
-
-// menu bahercha click kelyavar band व्हावा
-document.addEventListener('click', function(e) {
-  if (!trigger.contains(e.target) && !menu.contains(e.target)) {
-    menu.classList.remove('active');
-  }
-});
-
-
+/* ---------- 6. Video lightbox for story cards ---------- */
 const lightbox = document.getElementById('videoLightbox');
 const lightboxVideo = document.getElementById('lightboxVideo');
 const lightboxClose = document.getElementById('lightboxClose');
@@ -143,5 +167,3 @@ document.addEventListener('keydown', function(e) {
     closeLightbox();
   }
 });
-
-

@@ -130,12 +130,14 @@ img{max-width:100%;display:block;}
   letter-spacing:.14em;
   padding:10px 18px;
   white-space:nowrap;
-  transition:background .2s ease, color .2s ease;
+  transition:background .2s ease, color .2s ease, transform .2s ease, box-shadow .2s ease;
   width: 60%;
 }
 .contact-plan-wedding-btn:hover{
   background:#8c1739;
   color:#fff;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 25px rgba(43, 27, 31, 0.2);
 }
 
 /* ---------- Hamburger ---------- */
@@ -177,7 +179,7 @@ img{max-width:100%;display:block;}
 .header-mobile-nav .header-nav-link{
   font-size:13px;
   width:100%;
-  padding:16px 32px;
+  padding:12px 32px;
   border-bottom:1px solid rgba(140, 23, 57, 0.1);
   text-align:left;
 }
@@ -191,7 +193,7 @@ img{max-width:100%;display:block;}
   letter-spacing:.14em;
   text-transform:uppercase;
   width: calc(100% - 64px);
-  margin:18px 32px;
+  margin:12px 32px;
   display:block;
 }
 
@@ -229,8 +231,7 @@ img{max-width:100%;display:block;}
   display: none;
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   background: #F8F3EB;
   padding: 24px;
   border-radius: 8px;
@@ -293,7 +294,7 @@ img{max-width:100%;display:block;}
     width:100%;
   }
 
-  /* Trigger link ekaच row madhे center kela, arrow sह */
+  /* Trigger link ekaच row madhе center kela, arrow sह */
   .header-mobile-nav #magicOfferTrigger{
     display:flex;
     align-items:center;
@@ -312,10 +313,9 @@ img{max-width:100%;display:block;}
     overflow-y:visible;
     box-shadow:none;
     border-radius:0;
-    border:none;
-    border-top:1px solid rgba(140, 23, 57, 0.1);
-    background:#fff0db;
-    padding:8px 32px;
+    background: #F8F0E6;
+    border: 1px solid #FFCF8D;
+    padding:0;
   }
 
   .header-mobile-nav .mega-menu.active{
@@ -323,11 +323,21 @@ img{max-width:100%;display:block;}
     flex-direction:column;
   }
 
+  /* Items share one border around the whole menu (set above on
+     .header-mobile-nav .mega-menu) — no separate box per item,
+     just a thin divider line between them. Width now matches
+     the top-level links (Home, Dream Weddings) edge to edge;
+     the extra left padding shows they're a submenu. */
   .header-mobile-nav .mega-menu-item{
-    text-align:center;
+    text-align:left;
     width:100%;
-    padding:12px 8px;
-    border-bottom:1px solid rgba(140, 23, 57, 0.1);
+    padding:12px 32px 12px 48px;
+    background:transparent;
+    border-bottom: 1px solid #FFCF8D;
+  }
+
+  .header-mobile-nav .mega-menu-item:last-child{
+    border-bottom: none;
   }
 }
 
@@ -337,6 +347,7 @@ img{max-width:100%;display:block;}
 .vendor-page{
   overflow-x:hidden;
   padding-top: 100px;
+  padding-bottom: 60px;
 }
 
 .vendor-heading{
@@ -508,7 +519,9 @@ img{max-width:100%;display:block;}
    ========================================================= */
 .vendor-closing-statement{
     max-width:820px;
-    margin:40px auto 50px;    /* वरती 40px जागा जोडली */
+    margin:40px auto 0;    /* वरती 40px जागा जोडली; bottom
+                               .vendor-page च्या padding-bottom
+                               मुळे guaranteed मिळेल */
     font-family:"Allrounder Monument Test";
     font-weight:400;
     font-size:15px;

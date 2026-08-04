@@ -171,13 +171,15 @@ img{max-width:100%;display:block;}
 .header-mobile-nav{
   display:none;
   flex-direction:column;
-  gap:18px;
-  padding:20px 32px 28px;
+  gap:4px;
+  padding:12px 32px 16px;
   background:var(--vendor-bg);
   border-top:1px solid var(--vendor-rule);
 }
 .header-mobile-nav .header-nav-link{
   font-size:13px;
+  width:100%;
+  padding:10px 0;
 }
 .header-mobile-nav .btn-solid{
   border:1px solid var(--vendor-maroon);
@@ -189,6 +191,8 @@ img{max-width:100%;display:block;}
   letter-spacing:.14em;
   text-transform:uppercase;
   width:100%;
+  margin-top: 8px;
+  display:block;
 }
 
 /* Mobile dropdown — shown when script.js adds .open */
@@ -296,15 +300,17 @@ img{max-width:100%;display:block;}
     gap: 0;
   }
 
-  .header-nav-link {
-    width: 100%;
-    padding: 14px 0;
-    border-bottom: 1px solid rgba(255,255,255,.1);
-  }
-
   .nav-item-dropdown {
     width: 100%;
     display: block;
+  }
+
+  /* Trigger row: text + arrow, left-aligned, full width and tappable */
+  #magicOfferTrigger{
+    display:flex;
+    align-items:center;
+    gap:6px;
+    width:100%;
   }
 
   .mega-menu {
@@ -317,10 +323,10 @@ img{max-width:100%;display:block;}
     overflow-y: visible;
     box-shadow: none;
     border-radius: 0;
-    border: none;
-    border-top: 1px solid #8C1739;
-    background: #F8F3EB;
-    padding: 8px 0 8px 16px;
+    border: 1px solid #FFCF8D;
+    background: #F8F0E6;
+    padding: 0;
+    margin: 8px 0;
   }
 
   .mega-menu.active {
@@ -328,11 +334,18 @@ img{max-width:100%;display:block;}
     flex-direction: column;
   }
 
+  /* Full-width divider lines (edge to edge like the top-level
+     links), with extra left indent to show these are submenu
+     items — no separate box border per item. */
   .mega-menu-item {
     text-align: left;
     width: 100%;
-    padding: 12px 8px;
-    border-bottom: 1px solid rgba(140, 23, 57, 0.15);
+    padding: 12px 16px 12px 32px;
+    border-bottom: 1px solid #FFCF8D;
+  }
+
+  .mega-menu-item:last-child{
+    border-bottom: none;
   }
 }
 
@@ -501,7 +514,7 @@ img{max-width:100%;display:block;}
    ========================================================= */
 .vendor-closing-statement{
     max-width:820px;
-    margin:0 auto 50px;
+    margin:0 auto;
     font-family:"Allrounder Monument Test";
     font-weight:400;
     font-size:15px;
@@ -510,7 +523,7 @@ img{max-width:100%;display:block;}
     text-align:center;
     color:#8C1739;
     opacity:.75;
-   padding-top: 30px;
+    padding-top: 30px;
 }
 
 /* =========================================================

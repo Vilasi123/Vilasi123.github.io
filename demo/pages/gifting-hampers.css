@@ -186,7 +186,8 @@ img{max-width:100%;display:block;}
   padding:10px 18px;
   font-size:12px;
   letter-spacing:.14em;
-  text-transform:uppercase;
+  font-family: "Allrounder Monument Test", sans-serif;
+ 
 }
 
 /* Mobile dropdown — shown when script.js adds .open (matches the
@@ -316,8 +317,8 @@ img{max-width:100%;display:block;}
     box-shadow: none;
     border-radius: 0;
     border: none;
-    border-top: 1px solid #8C1739;
-    background: #F8F3EB;
+   border: 1px solid #FFCF8D;
+    background:  #F8F3EB;
     padding: 8px 0 8px 16px;
   }
 
@@ -707,7 +708,7 @@ img{max-width:100%;display:block;}
 
 @media (max-width: 768px) {
   .footer-section { padding: 60px 20px; }
-  .footer-section h3 { font-size: 28px; }
+  .footer-section h3 { font-size: 28px; text-align: left; }
   .footer-section p, .footer-section a { font-size: 16px; }
   .footer-section a.footer-email { font-size: 16px; }
   .footer-section p.footer-address,
