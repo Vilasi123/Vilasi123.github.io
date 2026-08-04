@@ -342,6 +342,7 @@ img{max-width:100%;display:block;}
 .vendor-page{
   overflow-x:hidden;
   padding-top: 100px;
+  padding-bottom: 60px;
 }
 
 .vendor-heading{
@@ -499,7 +500,6 @@ img{max-width:100%;display:block;}
    CLOSING STATEMENT
    ========================================================= */
 .vendor-closing-statement{
-  padding-top: 25px;
     max-width:820px;
     margin:0 auto 50px;
     font-family:"Allrounder Monument Test";
@@ -509,8 +509,8 @@ img{max-width:100%;display:block;}
     letter-spacing:.03em;    /* 3% */
     text-align:center;
     color:#8C1739;
-    opacity:.75
-  
+    opacity:.75;
+   padding-top: 30px;
 }
 
 /* =========================================================
