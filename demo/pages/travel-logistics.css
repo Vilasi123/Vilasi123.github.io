@@ -226,13 +226,14 @@ img{max-width:100%;display:block;}
   transform: rotate(180deg);
 }
 
-/* ---------- Desktop Mega Menu (Vertical) ---------- */
+/* ---------- Desktop Mega Menu (Vertical) ----------
+   left:0 (not centered) so it opens directly under the
+   trigger's left edge. */
 .mega-menu {
   display: none;
   position: absolute;
   top: 100%;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   background: #F8F3EB;
   padding: 24px;
   border-radius: 8px;
@@ -498,6 +499,7 @@ img{max-width:100%;display:block;}
    CLOSING STATEMENT
    ========================================================= */
 .vendor-closing-statement{
+  padding-top: 25px;
     max-width:820px;
     margin:0 auto 50px;
     font-family:"Allrounder Monument Test";
@@ -507,7 +509,8 @@ img{max-width:100%;display:block;}
     letter-spacing:.03em;    /* 3% */
     text-align:center;
     color:#8C1739;
-    opacity:.75;
+    opacity:.75
+  
 }
 
 /* =========================================================
