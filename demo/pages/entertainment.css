@@ -34,18 +34,23 @@
 }
 
 
+.header-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
 .contact-plan-wedding-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.5em 1.3em;
-  background: #F8F0E6;
+  background: #F8F3EB;
   color: #8C1739;
-  font-family: "Allrounder Monument Test", sans-serif;
+  font-family: 'Allrounder Monument Test';
   font-size: 0.68rem;
   font-weight: 400;
   letter-spacing: 0.08em;
-  text-transform: uppercase;
   text-decoration: none;
   border-radius: 2px;
   border: 1px solid #8C1739;
@@ -53,7 +58,6 @@
   box-shadow: 0 20px 45px rgba(43, 27, 31, 0.12);
   transition: background 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
   height: 38.86px;
-  flex-shrink: 0;
   width: 60%;
 }
 
@@ -63,20 +67,205 @@
   box-shadow: 0 24px 50px rgba(43, 27, 31, 0.28);
 }
 
-.entertainment-page{
-    background:#F8F0E6;
-    padding: calc(var(--header-height) + 20px) 60px 90px;
-    min-height:100vh;
-    overflow-x:hidden;
+.planning-page{
+  background:#F8F0E6;
+  padding: calc(var(--header-height) + 20px) 60px 90px;
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
-.entertainment-page *{
-    box-sizing:border-box;
+.planning-page *{
+  box-sizing:border-box;
+}
+
+/* ---------- Magic We Offer dropdown ---------- */
+.nav-item-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  margin-left: 4px;
+  display: inline-block;
+  transition: transform .25s ease;
+}
+
+#magicOfferTrigger.active .dropdown-arrow {
+  transform: rotate(180deg);
+}
+
+.mega-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #F8F3EB;
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid #FFCF8D;
+  z-index: 999;
+  width: 260px;
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.mega-menu.active {
+  display: flex;
+  flex-direction: column;
+}
+
+.mega-menu-item {
+  color: #8C1739;
+  font-size: 10px;
+  line-height: 1.2;
+  text-align: left;
+  padding: 12px 8px;
+  cursor: default;
+  border-bottom: 1px solid rgba(140, 23, 57, 0.15);
+  font-family: 'Allrounder Monument Test';
+}
+
+.mega-menu-item:last-child {
+  border-bottom: none;
+}
+
+.mega-menu-item:hover {
+  color: #8C1739;
+  opacity: 0.65;
+}
+
+/* ---------- Hamburger toggle ---------- */
+.header-menu-toggle{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:6px;
+}
+.header-menu-toggle span{
+  width:24px;
+  height:2px;
+  background:#8C1739;
+  display:block;
+  transition:transform .25s ease, opacity .25s ease;
+}
+.header-menu-toggle.is-active span:nth-child(1){
+  transform:translateY(7px) rotate(45deg);
+}
+.header-menu-toggle.is-active span:nth-child(2){
+  opacity:0;
+}
+.header-menu-toggle.is-active span:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Mobile Nav Panel ---------- */
+.header-mobile-nav{
+  display:none;
+  flex-direction:column;
+  gap:0;
+  padding:0;
+  background:#F8F3EB;
+  border-top:1px solid #e7cba0;
+}
+.header-mobile-nav .header-nav-link{
+  font-size:13px;
+  width:100%;
+  padding:16px 32px;
+  border-bottom:1px solid rgba(140, 23, 57, 0.1);
+}
+.header-mobile-nav.open{
+  display:flex;
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  z-index:1050;
+  background:#F8F3EB;
+  box-shadow:0 12px 30px rgba(43, 27, 31, 0.15);
+  max-height:80vh;
+  overflow-y:auto;
+}
+
+/* ---------- Tablet (≤1024px) ---------- */
+@media (max-width: 1024px) {
+  .mega-menu {
+    width: 240px;
+    padding: 20px;
+  }
+  .mega-menu-item {
+    font-size: 12.5px;
+    padding: 10px 8px;
+  }
+}
+
+/* ---------- Mobile (≤820px) ---------- */
+@media (max-width:820px){
+  .header-nav-left,
+  .header-nav-right{ display:none; }
+  .header-menu-toggle{ display:flex; }
+
+  .header-mobile-nav .nav-item-dropdown{
+    width:100%;
+  }
+
+  .header-mobile-nav #magicOfferTrigger{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .header-mobile-nav .mega-menu{
+    display:none;
+    position:static;
+    transform:none;
+    width:100%;
+    max-width:100%;
+    max-height:none;
+    overflow-y:visible;
+    box-shadow:none;
+    border-radius:0;
+    border:none;
+    border-top:1px solid rgba(140, 23, 57, 0.1);
+    background:#FFF0DB;
+    padding:8px 32px;
+  }
+
+  .header-mobile-nav .mega-menu.active{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .header-mobile-nav .mega-menu-item{
+    text-align:left;
+    width:100%;
+    padding:12px 8px;
+    border-bottom:1px solid rgba(140, 23, 57, 0.1);
+  }
+
+  .planning-page{
+    padding: calc(var(--header-height) + 20px) 24px 60px;
+  }
 }
 
 /* =========================================================
    PAGE HEADING
    ========================================================= */
+
+   .entertainment-page{
+  background:#F8F0E6;
+  padding: calc(var(--header-height) + 20px) 60px 90px;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+
+.entertainment-page *{
+  box-sizing:border-box;
+}
 
 .entertainment-heading{
     max-width:800px;

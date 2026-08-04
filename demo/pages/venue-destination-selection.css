@@ -29,13 +29,18 @@
   font-style: normal;
 }
 
+.header-nav-left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
 
 .contact-plan-wedding-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   padding: 0.5em 1.3em;
-  background: #F8F0E6;
+  background: #F8F3EB;
   color: #8C1739;
   font-family: 'Allrounder Monument Test';
   font-size: 0.68rem;
@@ -43,165 +48,29 @@
   letter-spacing: 0.08em;
   text-decoration: none;
   border-radius: 2px;
-  border: 1px solid  #8C1739;
+  border: 1px solid #8C1739;
   line-height: 1;
   box-shadow: 0 20px 45px rgba(43, 27, 31, 0.12);
   transition: background 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
-   height: 38.86px;
-   width: 60%;
+  height: 38.86px;
+  width: 60%;
 }
 
 .contact-plan-wedding-btn:hover {
-   background:#F8F0E6;
+  background: #F8F0E6;
   transform: translateY(-2px);
   box-shadow: 0 24px 50px rgba(43, 27, 31, 0.28);
 }
 
-/* =========================================================
-   HEADER
-   ========================================================= */
-.header-section{
-  position:fixed;
-  top:0; left:0; right:0;
-  z-index:1000;
-  background:#fff7eb;
-  border-bottom:2px solid #8c1739;
-  padding:20px 0;
-  transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.header-section.scrolled{
-  box-shadow: 0 8px 30px rgba(43, 27, 31, 0.08);
+.planning-page{
+  background:#F8F0E6;
+  padding: calc(var(--header-height) + 20px) 60px 90px;
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
-.header-container{
-  max-width:1200px;
-  margin:0 auto;
-  padding:0 32px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:28px;
-  position:relative;
-}
-.header-nav-left,
-.header-nav-right{
-  display:flex;
-  align-items:center;
-  gap:28px;
-  flex:1;
-}
-.header-nav-right{
-  justify-content:flex-end;
-}
-.header-nav-link{
-  color:#8c1739;
-  text-decoration:none;
-  font-family:'Allrounder Monument Test';
-  font-size:12px;
-  letter-spacing:.14em;
-  text-align: center;
-  white-space:nowrap;
-}
-.header-nav-link:hover{
-  color:#8c1739;
-}
-.header-logo{
-  flex-shrink:0;
-  display:block;
-}
-.header-logo-img{
-  height:46px;
-  width:auto;
-}
-.contact-plan-wedding-btn{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  border:1px solid #8c1739;
-  color:#8c1739;
-  text-decoration:none;
-  font-family:'Allrounder Monument Test';
-  font-size:11px;
-  letter-spacing:.14em;
-  padding:10px 18px;
-  white-space:nowrap;
-  transition:background .2s ease, color .2s ease;
-  width: 60%;
-}
-.contact-plan-wedding-btn:hover{
-  background:#8c1739;
-  color:#fff;
-}
-
-/* ---------- Hamburger ---------- */
-.header-menu-toggle{
-  display:none;
-  flex-direction:column;
-  gap:5px;
-  background:none;
-  border:none;
-  cursor:pointer;
-  padding:6px;
-}
-.header-menu-toggle span{
-  width:24px;
-  height:2px;
-  background:#8c1739;
-  display:block;
-  transition:transform .25s ease, opacity .25s ease;
-}
-.header-menu-toggle.is-active span:nth-child(1){
-  transform:translateY(7px) rotate(45deg);
-}
-.header-menu-toggle.is-active span:nth-child(2){
-  opacity:0;
-}
-.header-menu-toggle.is-active span:nth-child(3){
-  transform:translateY(-7px) rotate(-45deg);
-}
-
-/* ---------- Mobile Nav Panel ---------- */
-.header-mobile-nav{
-  display:none;
-  flex-direction:column;
-  gap:0;
-  padding:0;
-  background:#fff7eb;
-  border-top:1px solid #d8c6ab;
-}
-.header-mobile-nav .header-nav-link{
-  font-size:13px;
-  width:100%;
-  padding:16px 32px;
-  border-bottom:1px solid rgba(140, 23, 57, 0.1);
-  text-align:left;
-}
-.header-mobile-nav .btn-solid{
-  border:1px solid #8c1739;
-  color:#8c1739;
-  text-decoration:none;
-  text-align:center;
-  padding:10px 18px;
-  font-size:12px;
-  letter-spacing:.14em;
-  text-transform:uppercase;
-  width: calc(100% - 64px);
-  margin:18px 32px;
-  display:block;
-}
-
-.header-mobile-nav.open{
-  display:flex;
-  position:absolute;
-  top:100%;
-  left:0;
-  right:0;
-  z-index:1050;
-  background:#fff7eb;
-  box-shadow:0 12px 30px rgba(43, 27, 31, 0.15);
-  max-height:80vh;
-  overflow-y:auto;
+.planning-page *{
+  box-sizing:border-box;
 }
 
 /* ---------- Magic We Offer dropdown ---------- */
@@ -230,8 +99,7 @@
   background: #F8F3EB;
   padding: 24px;
   border-radius: 8px;
-  border: 1px solid #8C1739;
-  box-shadow: 0 12px 30px rgba(0,0,0,.2);
+  border: 1px solid #FFCF8D;
   z-index: 999;
   width: 260px;
   max-height: 70vh;
@@ -245,12 +113,13 @@
 
 .mega-menu-item {
   color: #8C1739;
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: 10px;
+  line-height: 1.2;
   text-align: left;
   padding: 12px 8px;
   cursor: default;
   border-bottom: 1px solid rgba(140, 23, 57, 0.15);
+  font-family: 'Allrounder Monument Test';
 }
 
 .mega-menu-item:last-child {
@@ -260,6 +129,61 @@
 .mega-menu-item:hover {
   color: #8C1739;
   opacity: 0.65;
+}
+
+/* ---------- Hamburger toggle ---------- */
+.header-menu-toggle{
+  display:none;
+  flex-direction:column;
+  gap:5px;
+  background:none;
+  border:none;
+  cursor:pointer;
+  padding:6px;
+}
+.header-menu-toggle span{
+  width:24px;
+  height:2px;
+  background:#8C1739;
+  display:block;
+  transition:transform .25s ease, opacity .25s ease;
+}
+.header-menu-toggle.is-active span:nth-child(1){
+  transform:translateY(7px) rotate(45deg);
+}
+.header-menu-toggle.is-active span:nth-child(2){
+  opacity:0;
+}
+.header-menu-toggle.is-active span:nth-child(3){
+  transform:translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Mobile Nav Panel ---------- */
+.header-mobile-nav{
+  display:none;
+  flex-direction:column;
+  gap:0;
+  padding:0;
+  background:#F8F3EB;
+  border-top:1px solid #e7cba0;
+}
+.header-mobile-nav .header-nav-link{
+  font-size:13px;
+  width:100%;
+  padding:16px 32px;
+  border-bottom:1px solid rgba(140, 23, 57, 0.1);
+}
+.header-mobile-nav.open{
+  display:flex;
+  position:absolute;
+  top:100%;
+  left:0;
+  right:0;
+  z-index:1050;
+  background:#F8F3EB;
+  box-shadow:0 12px 30px rgba(43, 27, 31, 0.15);
+  max-height:80vh;
+  overflow-y:auto;
 }
 
 /* ---------- Tablet (≤1024px) ---------- */
@@ -274,7 +198,7 @@
   }
 }
 
-/* ---------- Mobile — single unified breakpoint (≤820px) ---------- */
+/* ---------- Mobile (≤820px) ---------- */
 @media (max-width:820px){
   .header-nav-left,
   .header-nav-right{ display:none; }
@@ -284,13 +208,10 @@
     width:100%;
   }
 
-  /* Trigger link ekaच row madhे center kela, arrow sह */
   .header-mobile-nav #magicOfferTrigger{
     display:flex;
     align-items:center;
-    justify-content:left;
-    gap:6px;
-    width:100%;
+    justify-content:space-between;
   }
 
   .header-mobile-nav .mega-menu{
@@ -305,7 +226,7 @@
     border-radius:0;
     border:none;
     border-top:1px solid rgba(140, 23, 57, 0.1);
-    background:#fff0db;
+    background:#FFF0DB;
     padding:8px 32px;
   }
 
@@ -315,10 +236,14 @@
   }
 
   .header-mobile-nav .mega-menu-item{
-    text-align:center;
+    text-align:left;
     width:100%;
     padding:12px 8px;
     border-bottom:1px solid rgba(140, 23, 57, 0.1);
+  }
+
+  .planning-page{
+    padding: calc(var(--header-height) + 20px) 24px 60px;
   }
 }
 

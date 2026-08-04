@@ -21,3 +21,4 @@ document.addEventListener('DOMContentLoaded', () => {
   // Add page-specific interactivity here as needed.
 
 });
+

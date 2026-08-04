@@ -141,6 +141,8 @@ section { position: relative; }
   cursor: default;
   border-bottom: 1px solid rgba(140, 23, 57, 0.15);
   font-family: 'Allrounder Monument Test';
+   text-decoration: none;
+  display: block;
 }
 
 .mega-menu-item:last-child {

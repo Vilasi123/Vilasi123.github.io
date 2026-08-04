@@ -234,8 +234,7 @@ img{max-width:100%;display:block;}
   background: #F8F3EB;
   padding: 24px;
   border-radius: 8px;
-  border: 1px solid #8C1739;
-  box-shadow: 0 12px 30px rgba(0,0,0,.2);
+  border: 1px solid #FFCF8D;
   z-index: 999;
   width: 260px;
   max-height: 70vh;
@@ -247,15 +246,21 @@ img{max-width:100%;display:block;}
   flex-direction: column;
 }
 
+/* mega-menu-item is an <a> tag — display:block + text-decoration:none
+   keep it looking identical to the old <div> version; cursor stays
+   the normal pointer/hand since it's a real clickable link now. */
 .mega-menu-item {
+  display: block;
+  text-decoration: none;
   color: #8C1739;
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: 10px;
+  line-height: 1.2;
   text-align: left;
   padding: 12px 8px;
-  cursor: default;
   border-bottom: 1px solid rgba(140, 23, 57, 0.15);
+  font-family: 'Allrounder Monument Test';
 }
+
 
 .mega-menu-item:last-child {
   border-bottom: none;

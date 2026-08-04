@@ -9,9 +9,9 @@
 // ---- EmailJS config: replace these 3 with your own values from
 // your EmailJS dashboard (Account > General for the public key;
 // Email Services / Email Templates for the other two IDs) ----
-const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
-const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
-const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY  = 'AgYhmKMCkZKL-TOc3';
+const EMAILJS_SERVICE_ID  = 'service_n90c8fg';
+const EMAILJS_TEMPLATE_ID = 'template_eq6mq7k';
 
 // All enquiries are sent to this inbox. Make sure your EmailJS
 // template's "To Email" field is set to {{toEmail}} so it uses this.
