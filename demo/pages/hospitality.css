@@ -69,7 +69,7 @@ img{max-width:100%;display:block;}
   z-index:1000;
   background:var(--hosp-bg);
   border-bottom:2px solid var(--hosp-maroon);
-  padding:28px 0;
+  padding:30px;
   transition: box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .header-container{
@@ -100,7 +100,7 @@ img{max-width:100%;display:block;}
   color:#8c1739;
   text-decoration:none;
   font-family:'Allrounder Monument Test';
-  font-size:12px;
+  font-size:13px;
   letter-spacing:.14em;
   white-space:nowrap;
 }
@@ -112,7 +112,7 @@ img{max-width:100%;display:block;}
   display:block;
 }
 .header-logo-img{
-  height:50px;
+  height:60px;
   width:auto;
 }
 .contact-plan-wedding-btn{

@@ -112,10 +112,11 @@ section { position: relative; }
 
 /* ---------- Desktop Mega Menu (Vertical) ---------- */
 .mega-menu {
-  display: none;
+ display: none;
   position: absolute;
   top: 100%;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
   background: #F8F3EB;
   padding: 24px;
   border-radius: 8px;
