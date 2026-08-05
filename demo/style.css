@@ -390,13 +390,13 @@ section { position: relative; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1.6rem;
 }
 
 .header-nav-left, .header-nav-right {
   display: flex;
   align-items: center;
-  gap: 1.8rem;
+  gap: 1rem;
   flex: 1;
 }
 .header-nav-right { justify-content: flex-end; }
@@ -442,7 +442,7 @@ section { position: relative; }
 }
 
 .header-logo-img {
-  height: 62px;
+  height: 63px;
   width: auto;
 }
 
