@@ -1,0 +1,27 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+# ✅ 301 Redirects (fixed syntax)
+
+RewriteRule ^physiothreapy-at-home-in-gurgaon/?$ /physiotherapy-at-home-in-gurgaon/ [R=301,L]
+RewriteRule ^physiothereapy-at-home-in-noida/?$ /physiotherapy-at-home-in-noida/ [R=301,L]
+
+# ✅ React SPA fallback (VERY IMPORTANT)
+
+RewriteRule ^index\.html$ - [L]
+
+# ✅ Serve prerendered per-route pages directly (bare path, no trailing slash)
+# Every route in the app has its own prerendered dist/<route>.html. Without
+# this rule, a request for e.g. /our-vision (no trailing slash) would fall
+# straight through to the generic SPA fallback below and incorrectly serve
+# the home page's HTML instead of the Our Vision page's HTML.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI}.html -f
+RewriteRule ^(.*)$ $1.html [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.html [L]
+</IfModule>
