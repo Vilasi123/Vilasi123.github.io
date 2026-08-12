@@ -1,0 +1,72 @@
+.nursing__content {
+  padding: 5% 1%;
+}
+.header__image {
+  position: relative;
+}
+
+.img_heading {
+  color: white;
+  position: relative;
+  /* bottom: 30vh; */
+  font-size: 40px;
+  font-weight: bold;
+  left: 0;
+  position: absolute;
+  text-align: center;
+  top: 40%;
+  width: 100%;
+}
+.background__img {
+  filter: brightness(50%);
+}
+
+.nursing__para,
+.nursing__ul {
+  color: rgb(97, 97, 97);
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: justify;
+}
+.header__text {
+  padding-right: 7%;
+  padding-left: 7%;
+}
+.nursing__heading {
+  color: #21487d;
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 5%;
+  text-align: center;
+}
+.nursing__text {
+  padding-right: 2%;
+}
+.row__content {
+  margin-top: 6%;
+}
+.attendend__service > div > p {
+  text-align: center;
+}
+.attendend__service {
+  margin-bottom: 4%;
+}
+.testimonial__setion {
+  margin-top: 6%;
+}
+
+@media (max-width: 890px) {
+  .img_heading {
+    font-size: 30px;
+  }
+  .nursing__para,
+  .nursing__ul {
+    font-size: 16px;
+  }
+  .nursing__heading {
+    font-size: 24px;
+  }
+  .nursing__text {
+    padding-right: 0%;
+  }
+}

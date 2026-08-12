@@ -1,0 +1,209 @@
+.services__content__senocare {
+  padding: 4% 1%;
+}
+
+.services__para__senocare,
+.seno__service__ul {
+  color: rgb(97, 97, 97);
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: justify;
+}
+
+.service__heading__senocare {
+  color: #21487d;
+  font-size: 35px;
+  font-weight: bold;
+  margin-bottom: 5%;
+  text-align: center;
+}
+.banner__content {
+  padding: 0px 30px;
+}
+
+.senocare___heading__sencond {
+  color: #21487d;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 5%;
+  text-align: center;
+}
+.service__link__city {
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+
+  padding-bottom: 0 px;
+  background-color: #ecf4ff;
+  border-radius: 10px;
+}
+.service__link__city > div > ul > li a {
+  color: gray;
+  font-size: 17px;
+}
+.service__link__city > div > ul > li a:hover {
+  color: #21487d;
+  text-decoration: underline;
+}
+.link__service {
+  color: #21487d;
+  cursor: pointer;
+  font-size: 19px;
+}
+.link__service:hover {
+  text-decoration: underline;
+  font-weight: bold;
+}
+.senocare__heading__third {
+  color: #21487d;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 2%;
+  margin-top: 3%;
+  text-align: left;
+}
+.senocare__heading__fourth {
+  color: #21487d;
+  font-size: 23px;
+  font-weight: bold;
+  margin-bottom: 2%;
+  text-align: left;
+}
+
+.senocare__service__img {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 10px;
+}
+.city__service__icon {
+  padding: 20px 30px;
+  text-align: center;
+}
+.shakti__img {
+  border-radius: 50%;
+  width: 50%;
+}
+.city__service__image {
+  border-radius: 20px;
+}
+.medically__reviewed {
+  color: #21487d;
+  font-size: 18px;
+  font-weight: bold;
+}
+.shakti__content {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+}
+.img__content__shakti {
+  width: 30%;
+}
+.drsakti {
+  color: rgb(97, 97, 97);
+  font-size: 15px;
+  font-style: italic;
+  margin-top: -5px;
+}
+.drsk {
+  color: rgb(97, 97, 97);
+}
+.drsk:hover {
+  text-decoration: underline;
+}
+.medically__content {
+  margin-left: -13%;
+  margin-top: 4%;
+}
+.senocare__row__content {
+  margin-top: 7%;
+}
+.senocare__services__accordian {
+  margin-top: 5%;
+}
+.accordian__service__section {
+  margin-top: 1%;
+}
+.services__button {
+  color: #21487d;
+  background-color: transparent;
+  border: 1px solid #21487d;
+  padding: 10px 10px;
+}
+.services__button:hover {
+  color: white;
+  background-color: #21487d;
+
+  border: 1px solid transparent;
+}
+.hyper__link {
+  color: #21487d;
+}
+.agree__text {
+  color: rgb(97, 97, 97);
+  font-size: 15px;
+  line-height: 1.5;
+}
+.agree__content {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.form__submit__button {
+  background-color: #21487d;
+  border: #21487d 1px solid;
+}
+.subscription__input {
+  margin-top: 40px;
+}
+.para__agree {
+  margin-top: 30px;
+}
+.border__content {
+  border-bottom: 1.5px solid gray;
+  width: 20%;
+  margin-bottom: 20px;
+}
+
+@media (max-width: 890px) {
+  .nursing__para,
+  .services__para__senocare,
+  .seno__service__ul .medically__reviewed {
+    font-size: 16px;
+  }
+  .service__heading__senocare {
+    font-size: 26px;
+  }
+  .service__link__city > div > ul > li a {
+    color: gray;
+    font-size: 15px;
+  }
+  .service__link__city {
+    margin-top: 5%;
+    padding: 8% 3%;
+  }
+
+  .senocare__text__content {
+    margin-top: 10%;
+  }
+  .drsakti {
+    font-size: 13px;
+  }
+  .senocare___heading__sencond {
+    font-size: 24px;
+  }
+  .senocare__heading__third {
+    font-size: 22px;
+  }
+  .senocare__heading__fourth {
+    color: #21487d;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 2%;
+
+    text-align: left;
+  }
+  .services__content__senocare {
+    padding: 4% 5%;
+  }
+}

@@ -1,0 +1,143 @@
+<style>
+  .row__content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    font-family: "Raleway", sans-serif;
+    line-height: 1.5;
+    padding: 3%;
+  }
+
+  .column__content {
+    flex: 0 0 calc(50% - 20px);
+    margin-bottom: 20px;
+  }
+
+  .column__content:nth-child(odd) {
+    margin-right: 20px;
+  }
+  .card-text > div > h2 {
+    color: #174679;
+    font-size: 21px;
+  }
+  .card-text > div > p {
+    color: #424242;
+    font-size: 15px;
+  }
+  a:hover {
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 768px) {
+    .column__content {
+      flex: 0 0 100%;
+    }
+    .card-text > div > h2 {
+      font-size: 18px;
+    }
+    .card-text > div > p {
+      font-size: 14px;
+    }
+    .row {
+      padding: 4%;
+    }
+  }
+
+  .card {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    display: flex;
+  }
+
+  .card img {
+    width: 200px; /* Adjust width as needed */
+    height: 200px; /* Adjust height as needed */
+    border-radius: 8px;
+    margin-right: 20px;
+    object-fit: cover; /* Ensure the image covers the specified dimensions */
+  }
+
+  /* .card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  } */
+
+  .card-text {
+    flex: 3;
+    display: flex;
+    padding: 10px 30px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card h2,
+  .card p {
+    margin: 0;
+  }
+</style>
+
+<div class="row__content">
+  <div class="column__content">
+    <div class="card">
+      <img
+        src="https://senocare.in/wp-content/uploads/2024/02/Icubed.jpg"
+        alt="Image 1" />
+      <div class="card-text">
+        <div>
+          <h2>Motarised 3 Functional bed</h2>
+
+          <!-- <p>This is the description of card 1.</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column__content">
+    <div class="card">
+      <img
+        src="https://senocare.in/wp-content/uploads/2024/02/bipac-Machine.jpg"
+        alt="Image 1" />
+      <div class="card-text">
+        <div>
+          <h2>Bipap Machine: Resmed</h2>
+          <!-- <p>This is the description of card 1.</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="column__content">
+    <div class="card">
+      <img
+        src="https://senocare.in/wp-content/uploads/2024/02/MultiparaMonitor.jpg"
+        alt="Image 2" />
+      <div class="card-text">
+        <div>
+          <h2>
+            <a href="https://senocare.in/multipara-monitor/"
+              >Multipara Monitor</a
+            >
+          </h2>
+          <!-- <p>This is the description of card 2.</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column__content">
+    <div class="card">
+      <img
+        src="https://senocare.in/wp-content/uploads/2020/08/7.png"
+        alt="Image 1" />
+      <div class="card-text">
+        <div>
+          <h2>
+            <a href="https://senocare.in/automated-wheelchairs/">Wheel Chair</a>
+          </h2>
+          <!-- <p>This is the description of card 1.</p> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

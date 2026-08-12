@@ -1,0 +1,28 @@
+.story__content {
+  /* margin-top: 15vh; */
+  padding-bottom: 5vh;
+  line-height: 1.5;
+}
+.our__story__content {
+  color: #21487d;
+  /* padding-top: 8vh; */
+  padding-bottom: 5vh;
+}
+.story_para > p {
+  color: rgb(97, 97, 97);
+  font-size: 18px;
+  text-align: justify;
+}
+i {
+  font-size: 18px;
+}
+.hyper__link {
+  color: #21487d;
+}
+
+@media screen and (max-width: 998px) {
+  .story__content {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+}

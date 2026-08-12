@@ -1,0 +1,84 @@
+/* .dropdown:hover > .dropdown-menu,
+.dropend:hover > .dropdown-menu {
+  display: block;
+  margin-top: 0.125em;
+  margin-left: 0.125em;
+} */
+.dropdown-toggle {
+  color: black;
+  margin-left: 0.5em;
+}
+#navbar__items__text {
+  color: black !important;
+}
+#navbar__items__text:hover {
+  color: #21487d !important;
+}
+
+/* #collapsible-nav-dropdown,
+.dropdown-toggle {
+  color: #21487d;
+  margin-left: 0.5em;
+} */
+
+.navbar__main {
+  background-color: #21487d;
+}
+.nav__subscribe {
+  /* padding: 5px 8px !important; */
+  background-color: white !important;
+  color: #21487d !important;
+  border-radius: 5px !important;
+  display: flex !important;
+  justify-content: center !important ;
+  align-items: center !important;
+}
+.nav__subscribe:hover {
+  text-decoration: underline !important;
+}
+.nav__items {
+  /* color: rgb(218, 218, 218); */
+  /* background-color: #21487d; */
+  font-weight: 500;
+}
+/* .dropend .dropdown-toggle {
+  color: salmon;
+  margin-left: 1em;
+} */
+
+#basic-nav-dropdown {
+  color: rgb(218, 218, 218);
+}
+#basic-nav-dropdown:hover {
+  color: white;
+}
+#basic-navbar-nav {
+  margin-left: 15%;
+}
+#menu_text {
+  color: rgb(218, 218, 218);
+  margin-left: 5px;
+}
+#menu_text:hover {
+  color: white;
+}
+
+/* code from chat gpt */
+.navbar__main.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.navbar__main .nav-dropdown .nav-dropdown {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 100%;
+  z-index: 1000;
+}
+
+.navbar__main .nav-dropdown .nav-dropdown:hover {
+  display: block;
+}

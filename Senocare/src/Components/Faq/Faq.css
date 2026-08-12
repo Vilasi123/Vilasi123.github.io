@@ -1,0 +1,41 @@
+.faq__content {
+  padding: 4% 1%;
+}
+.accordian {
+  border: 2px solid #ccdef8;
+  border-radius: 8px;
+}
+.accordian__faq {
+  margin-top: 2%;
+}
+
+.faq__para {
+  color: rgb(97, 97, 97);
+  font-size: 18px;
+  text-align: justify;
+}
+.accordian__header {
+  padding: 1%;
+  color: #21487d;
+  font-size: 22px;
+}
+.accordian__para {
+  color: rgb(97, 97, 97);
+  font-size: 18px;
+  padding: 10px;
+  text-align: justify;
+}
+@media (max-width: 890px) {
+  .faq__content {
+    padding: 4% 4%;
+  }
+  .accordian__para {
+    font-size: 16px;
+  }
+  .faq__para {
+    font-size: 16px;
+  }
+  .accordian__header {
+    font-size: 19px;
+  }
+}

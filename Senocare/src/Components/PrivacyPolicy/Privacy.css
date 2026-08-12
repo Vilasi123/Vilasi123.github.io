@@ -1,0 +1,30 @@
+.footer__content__heading {
+  color: #21487d;
+  font-size: 34px;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 4%;
+}
+.footer__main__content {
+  padding: 4% 0%;
+}
+
+.footer__content__para,
+.touch__ul {
+  color: rgb(97, 97, 97);
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: justify;
+}
+@media screen and (max-width: 768px) {
+  .footer__content__heading {
+    font-size: 24px;
+  }
+  .footer__content__para {
+    font-size: 16px;
+  }
+
+  .footer__main__content {
+    padding: 4% 4%;
+  }
+}

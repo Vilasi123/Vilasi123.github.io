@@ -1,0 +1,130 @@
+.touch__of__love__content {
+  padding: 4% 1%;
+}
+.img__touch {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  padding: 15px;
+}
+.heading__touch {
+  color: #21487d;
+  font-size: 30px;
+  font-weight: bold;
+}
+.text__content {
+  padding-left: 3%;
+}
+.border {
+  margin-top: 20px;
+  border: 1px solid rgb(181, 181, 181);
+}
+.touch__para,
+.touch__ul {
+  color: rgb(97, 97, 97);
+  font-size: 18px;
+  line-height: 1.6;
+  text-align: justify;
+}
+.price {
+  font-weight: bold;
+  font-size: 18px;
+}
+.sub__button {
+  color: #21487d;
+  border: 1px solid #21487d;
+}
+.sub__button:hover {
+  background-color: #21487d;
+  color: white;
+  border: 1px solid #21487d;
+}
+.service__included {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  padding: 20px 20px;
+  background-color: rgb(230, 230, 230);
+}
+.service__included > p {
+  font-size: 17px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 0rem;
+}
+.service__top__content {
+  color: rgb(97, 97, 97);
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 2%;
+}
+.customize__section {
+  margin-top: 3%;
+}
+.senocare__custome,
+.our_story__image {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  padding: 10px;
+}
+.inner__content {
+  padding: 3%;
+}
+
+td:first-child {
+  padding: 20px 30px !important;
+  color: #21487d !important;
+  font-size: 16px;
+  font-weight: bold;
+}
+td:nth-child(2),
+td:nth-child(3) {
+  color: rgb(97, 97, 97);
+  font-size: 17px;
+  line-height: 1.5;
+}
+th {
+  text-align: center;
+  color: #21487d !important;
+  font-size: 20px !important;
+}
+.table__section {
+  margin-top: 2%;
+}
+.testimonial__section {
+  margin-top: 5%;
+}
+.testimonial__header {
+  margin-bottom: 3%;
+}
+.subs__button {
+  background-color: #21487d;
+  padding: 1% 4%;
+}
+.subs__heading {
+  color: #21487d;
+  text-align: center !important;
+}
+
+@media screen and (max-width: 768px) {
+  .heading__touch {
+    font-size: 24px;
+  }
+  .touch__para,
+  .price {
+    font-size: 16px;
+  }
+  .text__content {
+    margin-top: 4%;
+  }
+  .service__included {
+    margin-top: 20px;
+  }
+}
+@media screen and (max-width: 990px) {
+  .service__included {
+    margin-top: 20px;
+  }
+}

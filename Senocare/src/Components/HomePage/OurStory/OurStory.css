@@ -1,0 +1,17 @@
+.our__story {
+  color: #21487d;
+}
+.our__story__contents {
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: justify;
+}
+i {
+  font-weight: bold;
+}
+.senocare__family {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  padding: 30px 15px;
+}

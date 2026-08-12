@@ -1,0 +1,31 @@
+.our__vision {
+  line-height: 1.5;
+}
+.content__text {
+  padding: 5% 0%;
+}
+.heading__content {
+  color: #21487d;
+}
+.our__story__content {
+  color: #21487d;
+  padding-top: 8%;
+}
+.story_para > p,
+ul li {
+  color: rgb(97, 97, 97);
+  font-size: 18px;
+
+  text-align: justify;
+}
+i {
+  font-size: 18px;
+}
+li {
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 998px) {
+  .content__text {
+    padding: 5% 7%;
+  }
+}

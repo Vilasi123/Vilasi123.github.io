@@ -1,0 +1,19 @@
+.media__img {
+  width: 70%;
+  /* border: 2px solid #21487d; */
+  border-radius: 5%;
+}
+.media__col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.client__testimonial {
+  color: #21487d;
+}
+.media__section {
+  padding: 5% 2%;
+}
+.media__heading {
+  padding-bottom: 3%;
+}
